@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QLHK_GUI
 {
-    public partial class FrmChiTietNhanKhau : Form
+    public partial class FrmChiTietNhanKhauChoDSNK : Form
     {
         CongDan congDan;
         CongDanBUS congDanBUS = new CongDanBUS();
@@ -22,15 +22,12 @@ namespace QLHK_GUI
         Cmnd cmnd = null;
         Cccd cccd = null;
 
-        public delegate void MyEvent(object sender, CongDan cd);
-        public event MyEvent AddCongDanEvent;
-
-        public FrmChiTietNhanKhau(CongDan cd)
+        public FrmChiTietNhanKhauChoDSNK(CongDan cd)
         {
             InitializeComponent();
             congDan = cd;
 
-            if (congDanBUS.ExistInDatabase(cd))
+            if (congDan != null)
             {
                 SetSuaState();
                 disableSua();
@@ -38,6 +35,9 @@ namespace QLHK_GUI
             }
             else
             {
+                congDan = new CongDan();
+                congDan.NgaySinh = DateTime.Now;
+
                 SetThemState();
             }
 
@@ -116,11 +116,13 @@ namespace QLHK_GUI
                 return;
             }
 
-            MessageBox.Show("Thêm thông tin nhân khẩu thành công\n " +
-                "chọn Lưu trong màn hình thông tin nhân khẩu để có thể cập nhật trong CSDL");
-
-            AddCongDanEvent?.Invoke(this, congDan);
-            Close();
+            bool result = congDanBUS.Add(congDan);
+            if (result)
+            {
+                MessageBox.Show("Thêm nhân khẩu thành công");
+            }
+            else
+                MessageBox.Show("Có lỗi trong việc thêm nhân khẩu");
         }
 
         private void BtnQuayLai_Click(object sender, EventArgs e)
@@ -139,9 +141,13 @@ namespace QLHK_GUI
                 return;
             }
 
-            MessageBox.Show("Sửa thông tin nhân khẩu thành công\n " +
-                "chọn Lưu trong màn hình thông tin nhân khẩu để có thể cập nhật trong CSDL");
-
+            bool result = congDanBUS.Update(congDan);
+            if (result)
+            {
+                MessageBox.Show("sửa nhân khẩu thành công");
+            }
+            else
+                MessageBox.Show("Có lỗi trong việc sửa nhân khẩu");
 
             Close();
         }

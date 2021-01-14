@@ -25,5 +25,11 @@ namespace QLHK_DTO
         public string LoaiSo { get => loaiSo; set => loaiSo = value; }
         public string LyDoLap { get => lyDoLap; set => lyDoLap = value; }
         public string NguoiLam { get => nguoiLam; set => nguoiLam = value; }
+
+        public void Update(CongDan congDan)
+        {
+            congDan.DiaChiThuongTru = DiaChi;
+            congDan.MaHoKhau = SoSo;
+        }
     }
 }

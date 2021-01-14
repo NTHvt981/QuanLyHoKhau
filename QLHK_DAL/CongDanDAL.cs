@@ -35,7 +35,6 @@ namespace QLHK_DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@MaHoKhau", cd.MaHoKhau);
                     cmd.Parameters.AddWithValue("@HoTen", cd.HoTen);
                     cmd.Parameters.AddWithValue("@NgaySinh", cd.NgaySinh);
                     cmd.Parameters.AddWithValue("@GioiTinh", cd.GioiTinh);
@@ -45,6 +44,10 @@ namespace QLHK_DAL
                     cmd.Parameters.AddWithValue("@HoTenBo", cd.HoTenBo);
                     cmd.Parameters.AddWithValue("@HoTenMe", cd.HoTenMe);
 
+                    if (!string.IsNullOrEmpty(cd.MaHoKhau))
+                        cmd.Parameters.AddWithValue("@MaHoKhau", cd.MaHoKhau);
+                    else
+                        cmd.Parameters.AddWithValue("@MaHoKhau", DBNull.Value);
 
                     if (!string.IsNullOrEmpty(cd.SoCccd))
                         cmd.Parameters.AddWithValue("@SoCccd", cd.SoCccd);
@@ -195,18 +198,7 @@ namespace QLHK_DAL
                             {
                                 CongDan cd = new CongDan();
 
-                                cd.Ma = int.Parse(reader["Ma"].ToString());
-                                cd.SoCmnd = reader["SoCmnd"].ToString();
-                                cd.SoCccd = reader["SoCccd"].ToString();
-                                cd.MaHoKhau = reader["MaHoKhau"].ToString();
-                                cd.HoTen = reader["HoTen"].ToString();
-                                cd.NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString());
-                                cd.GioiTinh = reader["GioiTinh"].ToString();
-                                cd.QueQuan = reader["QueQuan"].ToString();
-                                cd.QuocTich = reader["QuocTich"].ToString();
-                                cd.DiaChiThuongTru = reader["DiaChiThuongTru"].ToString();
-                                cd.HoTenBo = reader["HoTenBo"].ToString();
-                                cd.HoTenMe = reader["HoTenMe"].ToString();
+                                cd = GetFromReader(reader);
 
                                 congDans.Add(cd);
                             }
@@ -251,18 +243,7 @@ namespace QLHK_DAL
                         reader = cmd.ExecuteReader();
                         reader.Read();
 
-                        cd.Ma = int.Parse(reader["Ma"].ToString());
-                        cd.SoCmnd = reader["SoCmnd"].ToString();
-                        cd.SoCccd = reader["SoCccd"].ToString();
-                        cd.MaHoKhau = reader["MaHoKhau"].ToString();
-                        cd.HoTen = reader["HoTen"].ToString();
-                        cd.NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString());
-                        cd.GioiTinh = reader["GioiTinh"].ToString();
-                        cd.QueQuan = reader["QueQuan"].ToString();
-                        cd.QuocTich = reader["QuocTich"].ToString();
-                        cd.DiaChiThuongTru = reader["DiaChiThuongTru"].ToString();
-                        cd.HoTenBo = reader["HoTenBo"].ToString();
-                        cd.HoTenMe = reader["HoTenMe"].ToString();
+                        cd = GetFromReader(reader);
 
                         con.Close();
                         con.Dispose();
@@ -308,18 +289,67 @@ namespace QLHK_DAL
                             {
                                 CongDan cd = new CongDan();
 
-                                cd.Ma = int.Parse(reader["Ma"].ToString());
-                                cd.SoCmnd = reader["SoCmnd"].ToString();
-                                cd.SoCccd = reader["SoCccd"].ToString();
-                                cd.MaHoKhau = reader["MaHoKhau"].ToString();
-                                cd.HoTen = reader["HoTen"].ToString();
-                                cd.NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString());
-                                cd.GioiTinh = reader["GioiTinh"].ToString();
-                                cd.QueQuan = reader["QueQuan"].ToString();
-                                cd.QuocTich = reader["QuocTich"].ToString();
-                                cd.DiaChiThuongTru = reader["DiaChiThuongTru"].ToString();
-                                cd.HoTenBo = reader["HoTenBo"].ToString();
-                                cd.HoTenMe = reader["HoTenMe"].ToString();
+                                cd = GetFromReader(reader);
+
+                                congDans.Add(cd);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return congDans;
+        }
+
+        public List<CongDan> ReadAllByKeyWord(string key)
+        {
+            string query = string.Empty;
+            query += @"select * from [CONG_DAN]
+                    where
+                        SoCmnd like @Param or
+                        SoCccd like @Param or
+                        MaHoKhau like @Param or
+                        HoTen like @Param or
+                        GioiTinh like @Param or
+                        QueQuan like @Param or
+                        QuocTich like @Param or
+                        DiaChiThuongTru like @Param or
+                        HoTenBo like @Param or
+                        HoTenMe like @Param
+            ";
+
+            List<CongDan> congDans = new List<CongDan>();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@Param", '%' + key + '%');
+
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                CongDan cd = new CongDan();
+
+                                cd = GetFromReader(reader);
 
                                 congDans.Add(cd);
                             }
@@ -364,18 +394,7 @@ namespace QLHK_DAL
                         reader = cmd.ExecuteReader();
                         reader.Read();
 
-                        cd.Ma = int.Parse(reader["Ma"].ToString());
-                        cd.SoCmnd = reader["SoCmnd"].ToString();
-                        cd.SoCccd = reader["SoCccd"].ToString();
-                        cd.MaHoKhau = reader["MaHoKhau"].ToString();
-                        cd.HoTen = reader["HoTen"].ToString();
-                        cd.NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString());
-                        cd.GioiTinh = reader["GioiTinh"].ToString();
-                        cd.QueQuan = reader["QueQuan"].ToString();
-                        cd.QuocTich = reader["QuocTich"].ToString();
-                        cd.DiaChiThuongTru = reader["DiaChiThuongTru"].ToString();
-                        cd.HoTenBo = reader["HoTenBo"].ToString();
-                        cd.HoTenMe = reader["HoTenMe"].ToString();
+                        cd = GetFromReader(reader);
 
                         con.Close();
                         con.Dispose();
@@ -387,6 +406,31 @@ namespace QLHK_DAL
                     }
                 }
             }
+            return cd;
+        }
+
+        private CongDan GetFromReader(SqlDataReader reader)
+        {
+            CongDan cd = new CongDan();
+
+            cd.Ma = int.Parse(reader["Ma"].ToString());
+            cd.SoCmnd = reader["SoCmnd"].ToString();
+            cd.SoCccd = reader["SoCccd"].ToString();
+            cd.MaHoKhau = reader["MaHoKhau"].ToString();
+            cd.HoTen = reader["HoTen"].ToString();
+            cd.GioiTinh = reader["GioiTinh"].ToString();
+            cd.QueQuan = reader["QueQuan"].ToString();
+            cd.QuocTich = reader["QuocTich"].ToString();
+            cd.DiaChiThuongTru = reader["DiaChiThuongTru"].ToString();
+            cd.HoTenBo = reader["HoTenBo"].ToString();
+            cd.HoTenMe = reader["HoTenMe"].ToString();
+
+            string NgaySinh;
+            NgaySinh = reader["NgaySinh"].ToString();
+
+            if (!string.IsNullOrEmpty(NgaySinh.Trim()))
+                cd.NgaySinh = DateTime.Parse(NgaySinh);
+
             return cd;
         }
     }

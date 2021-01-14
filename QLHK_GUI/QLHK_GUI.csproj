@@ -94,6 +94,12 @@
     <Compile Include="FrmDanhSachBanKhaiNhanKhau.Designer.cs">
       <DependentUpon>FrmDanhSachBanKhaiNhanKhau.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDanhSachNhanKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDanhSachNhanKhau.Designer.cs">
+      <DependentUpon>FrmDanhSachNhanKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDanhSachTamTru.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,12 @@
     <Compile Include="FrmQuanLyHoKhau.Designer.cs">
       <DependentUpon>FrmQuanLyHoKhau.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmChiTietNhanKhauChoDSNK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChiTietNhanKhauChoDSNK.Designer.cs">
+      <DependentUpon>FrmChiTietNhanKhauChoDSNK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmChiTietBanKhaiNhanKhau.resx">
@@ -153,6 +165,9 @@
     <EmbeddedResource Include="FrmDanhSachBanKhaiNhanKhau.resx">
       <DependentUpon>FrmDanhSachBanKhaiNhanKhau.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDanhSachNhanKhau.resx">
+      <DependentUpon>FrmDanhSachNhanKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDanhSachTamTru.resx">
       <DependentUpon>FrmDanhSachTamTru.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChiTietNhanKhauChoDSNK.resx">
+      <DependentUpon>FrmChiTietNhanKhauChoDSNK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

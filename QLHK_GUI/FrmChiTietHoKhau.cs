@@ -39,6 +39,7 @@ namespace QLHK_GUI
                 rbKhong.Select();
 
                 hoKhau = hk;
+                listCongDan = congDanBUS.ReadAllByMaHoKhau(hoKhau.SoSo);
             }
 
             setData(hoKhau);
@@ -46,7 +47,7 @@ namespace QLHK_GUI
 
             SetDataGridView();
 
-            btnLuuSua.Click += BtnLuuSua_Click; ;
+            btnLuuSua.Click += BtnLuuSua_Click;
             btnLuuThem.Click += BtnLuuThem_Click;
             btnQuayLai.Click += BtnQuayLai_Click;
             btnXemNhanKhau.Click += BtnXemNhanKhau_Click;
@@ -61,7 +62,6 @@ namespace QLHK_GUI
             tbTimKiem.Leave += tbTimKiem_Leave;
             tbTimKiem_SetText();
 
-            listCongDan = congDanBUS.ReadAllByMaHoKhau(hoKhau.SoSo);
             loadData_Vao_GridView();
             dgvCongDan.CellClick += DgvCongDan_CellClick;
         }
@@ -89,6 +89,8 @@ namespace QLHK_GUI
         {
             foreach (CongDan congDan in listCongDan)
             {
+                hoKhau.Update(congDan);
+
                 if (congDanBUS.ExistInDatabase(congDan))
                 {
                     result = congDanBUS.Update(congDan);
@@ -325,13 +327,13 @@ namespace QLHK_GUI
 
         private void getData()
         {
-            tbSoSo.Text = hoKhau.SoSo;
-            tbChuSo.Text = hoKhau.ChuHo;
-            tbLoaiSo.Text = hoKhau.LoaiSo;
-            dtpNgayLap.Value = hoKhau.NgayLap;
-            tbLyDoLap.Text = hoKhau.LyDoLap;
-            tbNguoiLap.Text = hoKhau.NguoiLam;
-            tbDiaChi.Text = hoKhau.DiaChi;
+            hoKhau.SoSo = tbSoSo.Text;
+            hoKhau.ChuHo = tbChuSo.Text;
+            hoKhau.LoaiSo = tbLoaiSo.Text;
+            hoKhau.NgayLap = dtpNgayLap.Value;
+            hoKhau.LyDoLap = tbLyDoLap.Text;
+            hoKhau.NguoiLam = tbNguoiLap.Text;
+            hoKhau.DiaChi = tbDiaChi.Text;
         }
 
         private void enableSua()

@@ -85,9 +85,9 @@
             this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.Location = new System.Drawing.Point(194, 27);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(491, 46);
+            this.lbTitle.Size = new System.Drawing.Size(571, 46);
             this.lbTitle.TabIndex = 30;
-            this.lbTitle.Text = "Thông tin phiếu tạm vắng";
+            this.lbTitle.Text = "Thông tin bản khai nhân khẩu";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tbHoTen
@@ -500,6 +500,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(982, 953);
             this.Controls.Add(this.tbDanhSachQuanHeGiaDinh);
             this.Controls.Add(this.tbDanhSachTienAn);
