@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace QLHK_DAL
 {
-    public class BanKhaiNhanKhauDAL
+    class PhieuThayDoiHoKhauDAL
     {
         private static string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
-        private static BanKhaiNhanKhauDAL instance;
+        private static PhieuThayDoiHoKhauDAL instance;
 
-        public static BanKhaiNhanKhauDAL GetInstance()
+        public static PhieuThayDoiHoKhauDAL GetInstance()
         {
             if (instance == null)
-                instance = new BanKhaiNhanKhauDAL();
+                instance = new PhieuThayDoiHoKhauDAL();
             return instance;
         }
 
-        public bool Add(BanKhaiNhanKhau bknk)
+        public bool Add(PhieuThayDoiHoKhau bknk)
         {
             string query = string.Empty;
             query += @"
-                INSERT INTO [BAN_KHAI_NHAN_KHAU] (
+                INSERT INTO [PHIEU_THAY_DOI_HO_KHAU] (
                     [SoCmndCccd], 
                     [HoTen], 
                     [ChuHo], 
@@ -37,18 +37,9 @@ namespace QLHK_DAL
                     [DanToc],
                     [DacDiemNhanDang],
                     [NgheNghiep],
-                    [ChuyenMon],
-                    [TrinhDoHocVan],
-                    [BietTiengDanToc],
-                    [TrinhDoNgoaiNgu],
-                    [NoiOHienNay],
-                    [DanhSachNguoiCungDi],
                     [NgayCap],
                     [NoiCap],
-                    [NguoiCap],
-                    [DanhSachQuanHeGiaDinh],
-                    [DanhSachTienAn],
-                    [DanhSachKhenThuong]
+                    [NguoiCap]
                     )";
             query += @"VALUES (
                 @SoCmndCccd, 
@@ -62,18 +53,9 @@ namespace QLHK_DAL
                 @DanToc, 
                 @DacDiemNhanDang, 
                 @NgheNghiep, 
-                @ChuyenMon, 
-                @TrinhDoHocVan,
-                @BietTiengDanToc,
-                @TrinhDoNgoaiNgu,
-                @NoiOHienNay,
-                @DanhSachNguoiCungDi,
                 @NgayCap,
                 @NoiCap,
-                @NguoiCap,
-                @DanhSachQuanHeGiaDinh,
-                @DanhSachTienAn,
-                @DanhSachKhenThuong
+                @NguoiCap
                 )";
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
             {
@@ -84,7 +66,6 @@ namespace QLHK_DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@BietTiengDanToc", bknk.BietTiengDanToc);
                     cmd.Parameters.AddWithValue("@SoCmndCccd", bknk.SoCmndCccd);
                     cmd.Parameters.AddWithValue("@HoTen", bknk.HoTen);
                     cmd.Parameters.AddWithValue("@ChuHo", bknk.ChuHo);
@@ -96,17 +77,9 @@ namespace QLHK_DAL
                     cmd.Parameters.AddWithValue("@DanToc", bknk.DanToc);
                     cmd.Parameters.AddWithValue("@DacDiemNhanDang", bknk.DacDiemNhanDang);
                     cmd.Parameters.AddWithValue("@NgheNghiep", bknk.NgheNghiep);
-                    cmd.Parameters.AddWithValue("@ChuyenMon", bknk.ChuyenMon);
-                    cmd.Parameters.AddWithValue("@TrinhDoHocVan", bknk.TrinhDoHocVan);
-                    cmd.Parameters.AddWithValue("@TrinhDoNgoaiNgu", bknk.@TrinhDoNgoaiNgu);
-                    cmd.Parameters.AddWithValue("@NoiOHienNay", bknk.@NoiOHienNay);
-                    cmd.Parameters.AddWithValue("@DanhSachNguoiCungDi", bknk.@DanhSachNguoiCungDi);
                     cmd.Parameters.AddWithValue("@NgayCap", bknk.@NgayCap);
                     cmd.Parameters.AddWithValue("@NoiCap", bknk.@NoiCap);
                     cmd.Parameters.AddWithValue("@NguoiCap", bknk.@NguoiCap);
-                    cmd.Parameters.AddWithValue("@DanhSachQuanHeGiaDinh", bknk.@DanhSachQuanHeGiaDinh);
-                    cmd.Parameters.AddWithValue("@DanhSachTienAn", bknk.@DanhSachTienAn);
-                    cmd.Parameters.AddWithValue("@DanhSachKhenThuong", bknk.@DanhSachKhenThuong);
 
                     try
                     {
@@ -125,10 +98,10 @@ namespace QLHK_DAL
             return true;
         }
 
-        public bool Delete(BanKhaiNhanKhau bknk)
+        public bool Delete(PhieuThayDoiHoKhau bknk)
         {
             string query = string.Empty;
-            query += "DELETE FROM [BAN_KHAI_NHAN_KHAU] WHERE [Ma] = @Ma";
+            query += "DELETE FROM [PHIEU_THAY_DOI_HO_KHAU] WHERE [Ma] = @Ma";
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
             {
 
@@ -157,7 +130,7 @@ namespace QLHK_DAL
         public bool DeleteAll()
         {
             string query = string.Empty;
-            query += "DELETE FROM [BAN_KHAI_NHAN_KHAU]";
+            query += "DELETE FROM [PHIEU_THAY_DOI_HO_KHAU]";
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
             {
 
@@ -183,13 +156,13 @@ namespace QLHK_DAL
             return true;
         }
 
-        public List<BanKhaiNhanKhau> ReadAll()
+        public List<PhieuThayDoiHoKhau> ReadAll()
         {
             string query = string.Empty;
             query += "SELECT * ";
-            query += "FROM [BAN_KHAI_NHAN_KHAU]";
+            query += "FROM [PHIEU_THAY_DOI_HO_KHAU]";
 
-            List<BanKhaiNhanKhau> bknks = new List<BanKhaiNhanKhau>();
+            List<PhieuThayDoiHoKhau> bknks = new List<PhieuThayDoiHoKhau>();
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -210,7 +183,7 @@ namespace QLHK_DAL
                         {
                             while (reader.Read())
                             {
-                                BanKhaiNhanKhau bknk = GetFromReader(reader);
+                                PhieuThayDoiHoKhau bknk = GetFromReader(reader);
 
                                 bknks.Add(bknk);
                             }
@@ -228,10 +201,10 @@ namespace QLHK_DAL
             }
             return bknks;
         }
-        public List<BanKhaiNhanKhau> ReadAllByKeyword(string key)
+        public List<PhieuThayDoiHoKhau> ReadAllByKeyword(string key)
         {
             string query = string.Empty;
-            query += @"select * from [BAN_KHAI_NHAN_KHAU]
+            query += @"select * from [PHIEU_THAY_DOI_HO_KHAU]
                     where
                         SoCmndCccd like @Param or
                         HoTen like @Param or
@@ -239,24 +212,16 @@ namespace QLHK_DAL
                         SoHoSo like @Param or
                         TenThuongGoi like @Param or
                         QueQuan like @Param or
+                        QuocTich like @Param or
                         DiaChiHoKhau like @Param or
                         DanToc like @Param or
-                        DacDiemNhanDang like @Param or
+                        TonGiao like @Param or
                         NgheNghiep like @Param or
-                        ChuyenMon like @Param or
-                        TrinhDoHocVan like @Param or
-                        BietTiengDanToc like @Param or
-                        TrinhDoNgoaiNgu like @Param or
-                        NoiOHienNay like @Param or
-                        DanhSachNguoiCungDi like @Param or
                         NoiCap like @Param or
-                        NguoiCap like @Param or
-                        DanhSachQuanHeGiaDinh like @Param or
-                        DanhSachTienAn like @Param or
-                        DanhSachKhenThuong like @Param
+                        NguoiCap like @Param 
             ";
 
-            List<BanKhaiNhanKhau> congDans = new List<BanKhaiNhanKhau>();
+            List<PhieuThayDoiHoKhau> congDans = new List<PhieuThayDoiHoKhau>();
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -278,7 +243,7 @@ namespace QLHK_DAL
                         {
                             while (reader.Read())
                             {
-                                BanKhaiNhanKhau bknk = GetFromReader(reader);
+                                PhieuThayDoiHoKhau bknk = GetFromReader(reader);
 
                                 congDans.Add(bknk);
                             }
@@ -297,9 +262,9 @@ namespace QLHK_DAL
             return congDans;
         }
 
-        private BanKhaiNhanKhau GetFromReader(SqlDataReader reader)
+        private PhieuThayDoiHoKhau GetFromReader(SqlDataReader reader)
         {
-            BanKhaiNhanKhau bknk = new BanKhaiNhanKhau();
+            PhieuThayDoiHoKhau bknk = new PhieuThayDoiHoKhau();
 
             bknk.Ma = int.Parse(reader["Ma"].ToString());
             bknk.SoCmndCccd = reader["SoCmndCccd"].ToString();
@@ -312,17 +277,8 @@ namespace QLHK_DAL
             bknk.DanToc = reader["DanToc"].ToString();
             bknk.DacDiemNhanDang = reader["DacDiemNhanDang"].ToString();
             bknk.ChuHo = reader["ChuHo"].ToString();
-            bknk.ChuyenMon = reader["ChuyenMon"].ToString();
-            bknk.TrinhDoHocVan = reader["TrinhDoHocVan"].ToString();
-            bknk.BietTiengDanToc = reader["BietTiengDanToc"].ToString();
-            bknk.TrinhDoNgoaiNgu = reader["TrinhDoNgoaiNgu"].ToString();
-            bknk.NoiOHienNay = reader["NoiOHienNay"].ToString();
-            bknk.DanhSachNguoiCungDi = reader["DanhSachNguoiCungDi"].ToString();
             bknk.NoiCap = reader["NoiCap"].ToString();
             bknk.NguoiCap = reader["NguoiCap"].ToString();
-            bknk.DanhSachQuanHeGiaDinh = reader["DanhSachQuanHeGiaDinh"].ToString();
-            bknk.DanhSachTienAn = reader["DanhSachTienAn"].ToString();
-            bknk.DanhSachKhenThuong = reader["DanhSachKhenThuong"].ToString();
 
             string NgayCap, NgaySinh;
             NgayCap = reader["NgayCap"].ToString();

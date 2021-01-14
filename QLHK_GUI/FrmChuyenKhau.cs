@@ -75,7 +75,8 @@ namespace QLHK_GUI
 
         private void BtnSoSanh_Click(object sender, EventArgs e)
         {
-            bool result = bus.Compare(banKhai, phieu);
+            string error = "";
+            bool result = bus.Compare(banKhai, phieu, ref error);
             if (result)
             {
                 checkB3.Checked = true;
@@ -85,7 +86,7 @@ namespace QLHK_GUI
             }
             else
             {
-                MessageBox.Show("Thông tin không hợp lệ");
+                MessageBox.Show(error);
 
                 btnChuyenKhau.Enabled = false;
             }

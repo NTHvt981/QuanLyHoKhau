@@ -41,26 +41,58 @@ namespace QLHK_BUS
             return true;
         }
 
-        public bool Compare(BanKhaiNhanKhau banKhai, PhieuThayDoiHoKhau phieuThayDoi)
+        public bool Compare(BanKhaiNhanKhau banKhai, PhieuThayDoiHoKhau phieuThayDoi, ref string error)
         {
+            if (banKhai.HoTen != phieuThayDoi.HoTen)
+            {
+                error = "Họ tên không đồng nhất";
+                return false;
+            }
             if (banKhai.ChuHo != phieuThayDoi.ChuHo)
+            {
+                error = "tên chủ hộ không đồng nhất";
                 return false;
+            }
             if (banKhai.DacDiemNhanDang != phieuThayDoi.DacDiemNhanDang)
+            {
+                error = "đặc điểm nhận dạng không đồng nhất";
                 return false;
+            }
             if (banKhai.DanToc != phieuThayDoi.DanToc)
+            {
+                error = "dân tộc không đồng nhất";
                 return false;
+            }
             if (banKhai.DiaChiHoKhau != phieuThayDoi.DiaChiHoKhau)
+            {
+                error = "dịa chỉ hộ khẩu không đồng nhất";
                 return false;
+            }
             if (banKhai.NgaySinh.Date != phieuThayDoi.NgaySinh.Date)
+            {
+                error = "ngày sinh không đồng nhất";
                 return false;
+            }
             if (banKhai.NgheNghiep != phieuThayDoi.NgheNghiep)
+            {
+                error = "nghề nghiệp không đồng nhất";
                 return false;
+            }
             if (banKhai.QueQuan != phieuThayDoi.QueQuan)
+            {
+                error = "quê quán không đồng nhất";
                 return false;
+            }
             if (banKhai.SoCmndCccd != phieuThayDoi.SoCmndCccd)
+            {
+                error = "Số cmnd/cccd không đồng nhất";
                 return false;
+            }
             if (banKhai.SoHoSo != phieuThayDoi.SoHoSo)
+            {
+                error = "Mã hộ khẩu mới không đồng nhất";
                 return false;
+            }
 
             return true;
         }

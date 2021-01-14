@@ -22,8 +22,6 @@ namespace QLHK_GUI
 
             if (bk == null)
             {
-                SetThemState();
-
                 banKhai = new BanKhaiNhanKhau();
                 banKhai.NgayCap = DateTime.Now;
                 banKhai.NgaySinh = DateTime.Now;
@@ -32,19 +30,13 @@ namespace QLHK_GUI
             {
                 SetSuaState();
                 disableSua();
-                rbKhong.Select();
 
                 banKhai = bk;
             }
 
             setData(banKhai);
 
-            btnLuuSua.Click += BtnLuu_Click;
             btnLuuThem.Click += BtnLuuThem_Click;
-            btnQuayLai.Click += BtnQuayLai_Click;
-
-            rbCo.Click += RbCo_Click;
-            rbKhong.Click += RbKhong_Click;
         }
 
         private void BtnLuuThem_Click(object sender, EventArgs e)
@@ -61,17 +53,6 @@ namespace QLHK_GUI
         private void BtnQuayLai_Click(object sender, EventArgs e)
         {
             setData(banKhai);
-        }
-
-        private void BtnLuu_Click(object sender, EventArgs e)
-        {
-            getData();
-
-            bool result = bus.Update(banKhai);
-            if (result)
-                MessageBox.Show("Cập nhật bản khai nhân khẩu thành công");
-            else
-                MessageBox.Show("có lỗi trong việc cập nhật bản khai nhân khẩu");
         }
 
         private void RbKhong_Click(object sender, EventArgs e)
@@ -162,9 +143,6 @@ namespace QLHK_GUI
             tbTrinhDoNgoaiNgu.Enabled = true;
             dtpNgayCap.Enabled = true;
             dtpNgaySinh.Enabled = true;
-
-            btnLuuSua.Enabled = true;
-            btnQuayLai.Enabled = true;
         }
 
         private void disableSua()
@@ -190,18 +168,6 @@ namespace QLHK_GUI
             tbTrinhDoNgoaiNgu.Enabled = false;
             dtpNgayCap.Enabled = false;
             dtpNgaySinh.Enabled = false;
-
-            btnLuuSua.Enabled = false;
-            btnQuayLai.Enabled = false;
-        }
-
-        private void SetThemState()
-        {
-            lbSua.Visible = false;
-            rbCo.Visible = false;
-            rbKhong.Visible = false;
-            btnQuayLai.Visible = false;
-            btnLuuSua.Visible = false;
         }
 
         private void SetSuaState()

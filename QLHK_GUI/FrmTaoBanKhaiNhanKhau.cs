@@ -1,4 +1,5 @@
-﻿using QLHK_DTO;
+﻿using QLHK_BUS;
+using QLHK_DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace QLHK_GUI
         BanKhaiNhanKhau banKhai;
         public delegate void MyEvent(object sender, BanKhaiNhanKhau cd);
         public event MyEvent AddBanKhaiEvent;
+
+        BanKhaiNhanKhauBUS bus = new BanKhaiNhanKhauBUS();
         public FrmTaoBanKhaiNhanKhau(BanKhaiNhanKhau bk)
         {
             InitializeComponent();
@@ -37,6 +40,14 @@ namespace QLHK_GUI
         private void BtnLuuThem_Click(object sender, EventArgs e)
         {
             getData();
+
+            string error = "";
+            if (!bus.Validate(banKhai, ref error))
+            {
+                MessageBox.Show(error);
+                return;
+            }
+
             AddBanKhaiEvent?.Invoke(this, banKhai);
             Close();
         }

@@ -66,11 +66,6 @@
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayCap = new System.Windows.Forms.DateTimePicker();
             this.btnLuuThem = new System.Windows.Forms.Button();
-            this.btnQuayLai = new System.Windows.Forms.Button();
-            this.rbKhong = new System.Windows.Forms.RadioButton();
-            this.rbCo = new System.Windows.Forms.RadioButton();
-            this.btnLuuSua = new System.Windows.Forms.Button();
-            this.lbSua = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -391,56 +386,6 @@
             this.btnLuuThem.Text = "Xác nhận thêm";
             this.btnLuuThem.UseVisualStyleBackColor = true;
             // 
-            // btnQuayLai
-            // 
-            this.btnQuayLai.Location = new System.Drawing.Point(317, 912);
-            this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(107, 29);
-            this.btnQuayLai.TabIndex = 91;
-            this.btnQuayLai.Text = "Quay lại";
-            this.btnQuayLai.UseVisualStyleBackColor = true;
-            // 
-            // rbKhong
-            // 
-            this.rbKhong.AutoSize = true;
-            this.rbKhong.Checked = true;
-            this.rbKhong.Location = new System.Drawing.Point(160, 916);
-            this.rbKhong.Name = "rbKhong";
-            this.rbKhong.Size = new System.Drawing.Size(70, 21);
-            this.rbKhong.TabIndex = 90;
-            this.rbKhong.TabStop = true;
-            this.rbKhong.Text = "Không";
-            this.rbKhong.UseVisualStyleBackColor = true;
-            // 
-            // rbCo
-            // 
-            this.rbCo.AutoSize = true;
-            this.rbCo.Location = new System.Drawing.Point(108, 916);
-            this.rbCo.Name = "rbCo";
-            this.rbCo.Size = new System.Drawing.Size(46, 21);
-            this.rbCo.TabIndex = 89;
-            this.rbCo.TabStop = true;
-            this.rbCo.Text = "Có";
-            this.rbCo.UseVisualStyleBackColor = true;
-            // 
-            // btnLuuSua
-            // 
-            this.btnLuuSua.Location = new System.Drawing.Point(236, 912);
-            this.btnLuuSua.Name = "btnLuuSua";
-            this.btnLuuSua.Size = new System.Drawing.Size(64, 29);
-            this.btnLuuSua.TabIndex = 88;
-            this.btnLuuSua.Text = "Lưu";
-            this.btnLuuSua.UseVisualStyleBackColor = true;
-            // 
-            // lbSua
-            // 
-            this.lbSua.AutoSize = true;
-            this.lbSua.Location = new System.Drawing.Point(30, 916);
-            this.lbSua.Name = "lbSua";
-            this.lbSua.Size = new System.Drawing.Size(71, 17);
-            this.lbSua.TabIndex = 87;
-            this.lbSua.Text = "Chỉnh sửa";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -509,11 +454,6 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnLuuThem);
-            this.Controls.Add(this.btnQuayLai);
-            this.Controls.Add(this.rbKhong);
-            this.Controls.Add(this.rbCo);
-            this.Controls.Add(this.btnLuuSua);
-            this.Controls.Add(this.lbSua);
             this.Controls.Add(this.dtpNgayCap);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.tbNguoiCap);
@@ -600,11 +540,6 @@
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.DateTimePicker dtpNgayCap;
         private System.Windows.Forms.Button btnLuuThem;
-        private System.Windows.Forms.Button btnQuayLai;
-        private System.Windows.Forms.RadioButton rbKhong;
-        private System.Windows.Forms.RadioButton rbCo;
-        private System.Windows.Forms.Button btnLuuSua;
-        private System.Windows.Forms.Label lbSua;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
