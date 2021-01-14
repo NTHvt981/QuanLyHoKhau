@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmCapChuyenKhau.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmCapChuyenKhau.Designer.cs">
-      <DependentUpon>FrmCapChuyenKhau.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmChiTietBanKhaiNhanKhau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +81,18 @@
     </Compile>
     <Compile Include="FrmChiTietPhieuTamVang.Designer.cs">
       <DependentUpon>FrmChiTietPhieuTamVang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTaoPhieuThayDoiHoKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTaoPhieuThayDoiHoKhau.Designer.cs">
+      <DependentUpon>FrmTaoPhieuThayDoiHoKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChuyenKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChuyenKhau.Designer.cs">
+      <DependentUpon>FrmChuyenKhau.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDanhSachBanKhaiNhanKhau.cs">
       <SubType>Form</SubType>
@@ -142,6 +148,12 @@
     <Compile Include="FrmChiTietNhanKhauChoDSNK.Designer.cs">
       <DependentUpon>FrmChiTietNhanKhauChoDSNK.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTaoBanKhaiNhanKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTaoBanKhaiNhanKhau.Designer.cs">
+      <DependentUpon>FrmTaoBanKhaiNhanKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmChiTietBanKhaiNhanKhau.resx">
@@ -161,6 +173,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChiTietPhieuTamVang.resx">
       <DependentUpon>FrmChiTietPhieuTamVang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTaoPhieuThayDoiHoKhau.resx">
+      <DependentUpon>FrmTaoPhieuThayDoiHoKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChuyenKhau.resx">
+      <DependentUpon>FrmChuyenKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDanhSachBanKhaiNhanKhau.resx">
       <DependentUpon>FrmDanhSachBanKhaiNhanKhau.cs</DependentUpon>
@@ -185,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChiTietNhanKhauChoDSNK.resx">
       <DependentUpon>FrmChiTietNhanKhauChoDSNK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTaoBanKhaiNhanKhau.resx">
+      <DependentUpon>FrmTaoBanKhaiNhanKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

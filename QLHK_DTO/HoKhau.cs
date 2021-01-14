@@ -8,14 +8,14 @@ namespace QLHK_DTO
 {
     public class HoKhau
     {
-        private int ma;
-        private string soSo;
-        private string chuHo;
-        private string diaChi;
-        private DateTime ngayLap;
-        private string loaiSo;
-        private string lyDoLap;
-        private string nguoiLam;
+        private int ma = -1;
+        private string soSo = "";
+        private string chuHo = "";
+        private string diaChi = "";
+        private DateTime ngayLap = DateTime.Now;
+        private string loaiSo = "";
+        private string lyDoLap = "";
+        private string nguoiLam = "";
 
         public int Ma { get => ma; set => ma = value; }
         public string SoSo { get => soSo; set => soSo = value; }

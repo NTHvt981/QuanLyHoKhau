@@ -8,18 +8,18 @@ namespace QLHK_DTO
 {
     public class Cmnd
     {
-        private int ma;
-        private string soCmnd;
-        private string hoTen;
-        private DateTime ngaySinh;
-        private string queQuan;
-        private string diaChiHoKhau;
-        private string danToc;
-        private string tonGiao;
-        private string dacDiemNhanDang;
-        private DateTime ngayCap;
-        private string noiCap;
-        private string nguoiCap;
+        private int ma = -1;
+        private string soCmnd = "";
+        private string hoTen = "";
+        private DateTime ngaySinh = DateTime.Now;
+        private string queQuan = "";
+        private string diaChiHoKhau = "";
+        private string danToc = "";
+        private string tonGiao = "";
+        private string dacDiemNhanDang = "";
+        private DateTime ngayCap = DateTime.Now;
+        private string noiCap = "";
+        private string nguoiCap = "";
 
         public string NguoiCap { get => nguoiCap; set => nguoiCap = value; }
         public string NoiCap { get => noiCap; set => noiCap = value; }

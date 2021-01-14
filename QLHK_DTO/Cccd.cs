@@ -9,18 +9,18 @@ namespace QLHK_DTO
     public class Cccd
     {
         private int ma = -1;
-        private string soCccd;
-        private string hoTen;
-        private DateTime ngaySinh;
-        private string gioiTinh;
-        private string queQuan;
-        private string quocTich;
-        private string diaChiHoKhau;
+        private string soCccd = "";
+        private string hoTen = "";
+        private DateTime ngaySinh = DateTime.Now;
+        private string gioiTinh = "";
+        private string queQuan = "";
+        private string quocTich = "";
+        private string diaChiHoKhau = "";
         private DateTime thoiHan;
-        private string dacDiemNhanDang;
-        private DateTime ngayCap;
-        private string noiCap;
-        private string nguoiCap;
+        private string dacDiemNhanDang = "";
+        private DateTime ngayCap = DateTime.Now;
+        private string noiCap = "";
+        private string nguoiCap = "";
 
         public string NguoiCap { get => nguoiCap; set => nguoiCap = value; }
         public string NoiCap { get => noiCap; set => noiCap = value; }

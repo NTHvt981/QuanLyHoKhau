@@ -8,13 +8,13 @@ namespace QLHK_DTO
 {
     public class PhieuTamTru
     {
-        private int ma;
-        private string nguoiKhaiBao;
-        private string noiTamTru;
-        private string lyDo;
-        private DateTime ngayGhi;
-        private string noiGhi;
-        private string tenCanBo;
+        private int ma = -1;
+        private string nguoiKhaiBao = "";
+        private string noiTamTru = "";
+        private string lyDo = "";
+        private DateTime ngayGhi = DateTime.Now;
+        private string noiGhi = "";
+        private string tenCanBo = "";
 
         public int Ma { get => ma; set => ma = value; }
         public string NguoiKhaiBao { get => nguoiKhaiBao; set => nguoiKhaiBao = value; }

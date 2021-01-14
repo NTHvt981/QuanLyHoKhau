@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLHK_DTO
+namespace QLHK_BUS
 {
-    class ChiTietTamTru
+    class PhieuThayDoiHoKhauBUS
     {
-        public int Ma;
-        public PhieuTamTru Phieu;
-        public string GhiChu;
     }
 }

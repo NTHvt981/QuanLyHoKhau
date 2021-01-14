@@ -40,5 +40,12 @@ namespace QLHK_BUS
         {
             return BanKhaiNhanKhauDAL.GetInstance().Read(ma);
         }
+
+        public bool Validate(BanKhaiNhanKhau banKhai)
+        {
+
+
+            return true;
+        }
     }
 }

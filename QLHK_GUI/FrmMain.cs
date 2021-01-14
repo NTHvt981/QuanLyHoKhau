@@ -20,7 +20,7 @@ namespace QLHK_GUI
             btnQuanLyHoKhau.Click += BtnQuanLyHoKhau_Click; ;
             btnQuanLyTamVang.Click += BtnQuanLyTamVang_Click;
             btnQuanLyTamTru.Click += BtnQuanLyTamTru_Click;
-            btnChuyenKhau.Click += BtnChuyenKhau_Click;
+            btnQuanLyChuyenKhau.Click += BtnQuanLyChuyenKhau_Click;
 
             btnTraCuuHoKhau.Click += BtnTraCuuHoKhau_Click;
             btnTraCuuNhanKhau.Click += BtnTraCuuNhanKhau_Click;
@@ -31,12 +31,17 @@ namespace QLHK_GUI
             btnTraCuuPhieuTamVang.Click += BtnTraCuuPhieuTamVang_Click;
             btnTraCuuTamTru.Click += BtnTraCuuTamTru_Click;
 
-            btnTaoBanKhaiNhanKhau.Click += BtnTaoBanKhaiNhanKhau_Click;
             btnTraCuuBanKhaiNhanKhau.Click += BtnTraCuuBanKhaiNhanKhau_Click;
+
+            btnChuyenKhau.Click += BtnChuyenKhau_Click;
+
             btnExit.Click += BtnExit_Click;
         }
 
-
+        private void BtnChuyenKhau_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmChuyenKhau());
+        }
 
         private void BtnTraCuuTamTru_Click(object sender, EventArgs e)
         {
@@ -69,11 +74,6 @@ namespace QLHK_GUI
         private void BtnCapGiayTamVang_Click(object sender, EventArgs e)
         {
             openChildForm(new FrmChiTietPhieuTamVang(null));
-        }
-        private void BtnTaoBanKhaiNhanKhau_Click(object sender, EventArgs e)
-        {
-            FrmChiTietBanKhaiNhanKhau frm = new FrmChiTietBanKhaiNhanKhau(null);
-            frm.Show();
         }
 
 
@@ -116,7 +116,7 @@ namespace QLHK_GUI
             }
         }
 
-        private void BtnChuyenKhau_Click(object sender, EventArgs e)
+        private void BtnQuanLyChuyenKhau_Click(object sender, EventArgs e)
         {
             if (panelSubMenuCK.Visible == false)
             {

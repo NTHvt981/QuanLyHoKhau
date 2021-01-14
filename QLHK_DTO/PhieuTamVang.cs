@@ -8,20 +8,20 @@ namespace QLHK_DTO
 {
     public class PhieuTamVang
     {
-        private int ma;
-        private string soCmndCccd;
-        private string nguoiKhaiBao;
-        private string ngheNghiep;
-        private string noiLamViec;
-        private DateTime thoiGianBatDau;
-        private DateTime thoiGianKetThuc;
-        private string noiTamTru;
-        private string lyDo;
-        private string quanHeChuHo;
-        private string soNha;
-        private string danhSachTreEm;
-        private DateTime ngayKhaiBao;
-        private string tenCanBo;
+        private int ma = -1;
+        private string soCmndCccd = "";
+        private string nguoiKhaiBao = "";
+        private string ngheNghiep = "";
+        private string noiLamViec = "";
+        private DateTime thoiGianBatDau = DateTime.Now;
+        private DateTime thoiGianKetThuc = DateTime.Now;
+        private string noiTamTru = "";
+        private string lyDo = "";
+        private string quanHeChuHo = "";
+        private string soNha = "";
+        private string danhSachTreEm = "";
+        private DateTime ngayKhaiBao = DateTime.Now;
+        private string tenCanBo = "";
 
         public string TenCanBo { get => tenCanBo; set => tenCanBo = value; }
         public DateTime NgayKhaiBao { get => ngayKhaiBao; set => ngayKhaiBao = value; }

@@ -13,15 +13,15 @@ namespace QLHK_DTO
         private string soCccd;
         private string maHoKhau;
 
-        private string hoTen;
-        private DateTime ngaySinh;
-        private string gioiTinh;
-        private string queQuan;
-        private string quocTich;
+        private string hoTen = "";
+        private DateTime ngaySinh = DateTime.Now;
+        private string gioiTinh = "";
+        private string queQuan = "";
+        private string quocTich = "";
 
-        private string diaChiThuongTru;
-        private string hoTenBo;
-        private string hoTenMe;
+        private string diaChiThuongTru = "";
+        private string hoTenBo = "";
+        private string hoTenMe = "";
 
         public int Ma { get => ma; set => ma = value; }
         public string SoCmnd { get => soCmnd; set => soCmnd = value; }
@@ -44,6 +44,28 @@ namespace QLHK_DTO
         public bool CoCccd()
         {
             return !string.IsNullOrEmpty(SoCccd);
+        }
+
+        public void Update(Cmnd cmnd)
+        {
+            cmnd.HoTen = HoTen;
+            cmnd.NgaySinh = NgaySinh;
+            cmnd.QueQuan = QueQuan;
+            cmnd.DiaChiHoKhau = DiaChiThuongTru;
+
+            cmnd.NgayCap = DateTime.Now;
+        }
+
+        public void Update(Cccd cccd)
+        {
+            cccd.HoTen = HoTen;
+            cccd.NgaySinh = NgaySinh;
+            cccd.QueQuan = QueQuan;
+            cccd.DiaChiHoKhau = DiaChiThuongTru;
+            cccd.QuocTich = QuocTich;
+            cccd.GioiTinh = GioiTinh;
+
+            cccd.NgayCap = DateTime.Now;
         }
     }
 }

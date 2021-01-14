@@ -43,8 +43,6 @@
   <ItemGroup>
     <Compile Include="BanKhaiNhanKhau.cs" />
     <Compile Include="Cccd.cs" />
-    <Compile Include="ChiTietTamTru.cs" />
-    <Compile Include="ChiTietTamVang.cs" />
     <Compile Include="Cmnd.cs" />
     <Compile Include="CongDan.cs" />
     <Compile Include="HoKhau.cs" />

@@ -60,7 +60,10 @@ namespace QLHK_GUI
 
         private void BtnTaoCccd_Click(object sender, EventArgs e)
         {
-            FrmChiTietCccd frm = new FrmChiTietCccd(new Cccd());
+            Cccd cccd = new Cccd();
+            congDan.Update(cccd);
+
+            FrmChiTietCccd frm = new FrmChiTietCccd(cccd);
             frm.AddCccdEvent += Frm_AddCccdEvent;
             frm.UpdateCccdEvent += Frm_UpdateCccdEvent;
             frm.Show();

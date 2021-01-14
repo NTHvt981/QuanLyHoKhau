@@ -47,7 +47,15 @@ namespace QLHK_GUI
 
         private void BtnXoa_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            bool result = hkBus.Delete(hoKhauSelected);
+            if (result)
+            {
+                MessageBox.Show("Xoá hộ khẩu thành công");
+                listHoKhau = hkBus.ReadAll();
+                loadData_Vao_GridView();
+            }
+            else
+                MessageBox.Show("Có lỗi khi xoá hộ khẩu");
         }
 
         private void BtnXemChiTiet_Click(object sender, EventArgs e)
