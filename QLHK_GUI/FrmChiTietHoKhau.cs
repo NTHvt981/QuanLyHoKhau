@@ -30,7 +30,7 @@ namespace QLHK_GUI
                 SetThemHoKhau();
 
                 hoKhau = new HoKhau();
-                hoKhau.NgayLap = DateTime.Now;
+                hoKhau.NgayCap = DateTime.Now;
             }
             else
             {
@@ -175,7 +175,7 @@ namespace QLHK_GUI
         {
             congDanThem = new CongDan();
             congDanThem.MaHoKhau = hoKhau.SoSo;
-            congDanThem.DiaChiThuongTru = hoKhau.DiaChi;
+            congDanThem.DiaChiHoKhau = hoKhau.DiaChi;
             congDanThem.NgaySinh = DateTime.Now;
 
             FrmChiTietNhanKhau frm = new FrmChiTietNhanKhau(congDanThem);
@@ -316,24 +316,24 @@ namespace QLHK_GUI
 
         private void setData(HoKhau result)
         {
-            tbSoSo.Text = result.SoSo;
-            tbChuSo.Text = result.ChuHo;
-            tbLoaiSo.Text = result.LoaiSo;
-            dtpNgayLap.Value = result.NgayLap;
-            tbLyDoLap.Text = result.LyDoLap;
-            tbNguoiLap.Text = result.NguoiLam;
-            tbDiaChi.Text = result.DiaChi;
+            //tbSoSo.Text = result.SoSo;
+            //tbChuSo.Text = result.MaChuHo;
+            //tbLoaiSo.Text = result.LoaiSo;
+            //dtpNgayLap.Value = result.NgayLap;
+            //tbLyDoLap.Text = result.LyDoLap;
+            //tbNguoiLap.Text = result.NguoiLam;
+            //tbDiaChi.Text = result.DiaChi;
         }
 
         private void getData()
         {
-            hoKhau.SoSo = tbSoSo.Text;
-            hoKhau.ChuHo = tbChuSo.Text;
-            hoKhau.LoaiSo = tbLoaiSo.Text;
-            hoKhau.NgayLap = dtpNgayLap.Value;
-            hoKhau.LyDoLap = tbLyDoLap.Text;
-            hoKhau.NguoiLam = tbNguoiLap.Text;
-            hoKhau.DiaChi = tbDiaChi.Text;
+            //hoKhau.SoSo = tbSoSo.Text;
+            //hoKhau.MaChuHo = tbChuSo.Text;
+            //hoKhau.LoaiSo = tbLoaiSo.Text;
+            //hoKhau.NgayLap = dtpNgayLap.Value;
+            //hoKhau.LyDoLap = tbLyDoLap.Text;
+            //hoKhau.NguoiLam = tbNguoiLap.Text;
+            //hoKhau.DiaChi = tbDiaChi.Text;
         }
 
         private void enableSua()

@@ -43,62 +43,9 @@ namespace QLHK_BUS
 
         public bool Validate(CongDan cd, ref string error)
         {
-            if (DKHoTenTrong(cd))
-            {
-                error = "họ tên không để trống";
-                return false;
-            }
-
-            if (DKGioiTinhTrong(cd))
-            {
-                error = "giới tính không để trống";
-                return false;
-            }
-
-            if (DKNgaySinhTrong(cd))
-            {
-                error = "ngày sinh không để trống";
-                return false;
-            }
-
-            if (DKQueQuanTrong(cd))
-            {
-                error = "quê quán không để trống";
-                return false;
-            }
-
-            if (DKQuocTichTrong(cd))
-            {
-                error = "quốc tịch không để trống";
-                return false;
-            }
 
             return true;
         }
 
-        private bool DKHoTenTrong(CongDan phieu)
-        {
-            return string.IsNullOrEmpty(phieu.HoTen.Trim());
-        }
-
-        private bool DKNgaySinhTrong(CongDan phieu)
-        {
-            return phieu.NgaySinh == null;
-        }
-
-        private bool DKGioiTinhTrong(CongDan phieu)
-        {
-            return string.IsNullOrEmpty(phieu.GioiTinh.Trim());
-        }
-
-        private bool DKQueQuanTrong(CongDan phieu)
-        {
-            return string.IsNullOrEmpty(phieu.QueQuan.Trim());
-        }
-
-        private bool DKQuocTichTrong(CongDan phieu)
-        {
-            return string.IsNullOrEmpty(phieu.QuocTich.Trim());
-        }
     }
 }

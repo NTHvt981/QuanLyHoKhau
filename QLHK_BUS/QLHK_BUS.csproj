@@ -41,15 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BanKhaiNhanKhauBUS.cs" />
     <Compile Include="CccdBUS.cs" />
-    <Compile Include="ChuyenKhauBUS.cs" />
     <Compile Include="CmndBUS.cs" />
     <Compile Include="CongDanBUS.cs" />
     <Compile Include="HoKhauBUS.cs" />
     <Compile Include="PhieuTamTruBUS.cs" />
     <Compile Include="PhieuTamVangBUS.cs" />
-    <Compile Include="PhieuThayDoiHoKhauBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

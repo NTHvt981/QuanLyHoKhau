@@ -8,19 +8,19 @@ namespace QLHK_DTO
 {
     public class Cccd
     {
-        private int ma = -1;
-        private string soCccd = "";
-        private string hoTen = "";
-        private DateTime ngaySinh = DateTime.Now;
-        private string gioiTinh = "";
-        private string queQuan = "";
-        private string quocTich = "";
-        private string diaChiHoKhau = "";
-        private DateTime thoiHan;
-        private string dacDiemNhanDang = "";
-        private DateTime ngayCap = DateTime.Now;
-        private string noiCap = "";
-        private string nguoiCap = "";
+        private int ma = Init.INT;
+        private string soCccd = Init.STRING;
+        private string hoTen = Init.STRING;
+        private DateTime ngaySinh = Init.DATE;
+        private string gioiTinh = Init.STRING;
+        private string queQuan = Init.STRING;
+        private string quocTich = Init.STRING;
+        private string diaChiHoKhau = Init.STRING;
+        private DateTime thoiHan = Init.DATE;
+        private string dacDiemNhanDang = Init.STRING;
+        private DateTime ngayCap = Init.DATE;
+        private string noiCap = Init.STRING;
+        private string nguoiCap = Init.STRING;
 
         public string NguoiCap { get => nguoiCap; set => nguoiCap = value; }
         public string NoiCap { get => noiCap; set => noiCap = value; }
@@ -35,5 +35,19 @@ namespace QLHK_DTO
         public string HoTen { get => hoTen; set => hoTen = value; }
         public string SoCccd { get => soCccd; set => soCccd = value; }
         public int Ma { get => ma; set => ma = value; }
+
+        public void Update(CongDan congDan)
+        {
+            congDan.HoTen = HoTen;
+            congDan.SoCccd = SoCccd;
+            congDan.NgaySinh = NgaySinh;
+            congDan.QueQuan = QueQuan;
+            congDan.DiaChiHoKhau = DiaChiHoKhau;
+            congDan.QuocTich = QuocTich;
+            congDan.GioiTinh = GioiTinh;
+
+            congDan.DacDiemNhanDang = DacDiemNhanDang;
+            congDan.HoTen = HoTen;
+        }
     }
 }

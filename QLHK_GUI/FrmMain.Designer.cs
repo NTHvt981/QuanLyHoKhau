@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.panelSubMenuCK = new System.Windows.Forms.Panel();
-            this.btnChuyenKhau = new System.Windows.Forms.Button();
-            this.btnTraCuuPhieuThayDoiHoKhau = new System.Windows.Forms.Button();
-            this.btnTraCuuBanKhaiNhanKhau = new System.Windows.Forms.Button();
-            this.btnQuanLyChuyenKhau = new System.Windows.Forms.Button();
             this.panelSubMenuQLTV = new System.Windows.Forms.Panel();
             this.btnTraCuuPhieuTamVang = new System.Windows.Forms.Button();
             this.btnCapGiayTamVang = new System.Windows.Forms.Button();
@@ -52,7 +47,6 @@
             this.picBoxIcon = new System.Windows.Forms.PictureBox();
             this.panelSubForm = new System.Windows.Forms.Panel();
             this.panelLeft.SuspendLayout();
-            this.panelSubMenuCK.SuspendLayout();
             this.panelSubMenuQLTV.SuspendLayout();
             this.panelSubMenuQLTT.SuspendLayout();
             this.panelSubMenuQLHK.SuspendLayout();
@@ -63,8 +57,6 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panelLeft.Controls.Add(this.panelSubMenuCK);
-            this.panelLeft.Controls.Add(this.btnQuanLyChuyenKhau);
             this.panelLeft.Controls.Add(this.panelSubMenuQLTV);
             this.panelLeft.Controls.Add(this.btnQuanLyTamVang);
             this.panelLeft.Controls.Add(this.panelSubMenuQLTT);
@@ -79,62 +71,6 @@
             this.panelLeft.Padding = new System.Windows.Forms.Padding(3);
             this.panelLeft.Size = new System.Drawing.Size(250, 753);
             this.panelLeft.TabIndex = 0;
-            // 
-            // panelSubMenuCK
-            // 
-            this.panelSubMenuCK.Controls.Add(this.btnChuyenKhau);
-            this.panelSubMenuCK.Controls.Add(this.btnTraCuuPhieuThayDoiHoKhau);
-            this.panelSubMenuCK.Controls.Add(this.btnTraCuuBanKhaiNhanKhau);
-            this.panelSubMenuCK.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuCK.Location = new System.Drawing.Point(3, 574);
-            this.panelSubMenuCK.Name = "panelSubMenuCK";
-            this.panelSubMenuCK.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.panelSubMenuCK.Size = new System.Drawing.Size(244, 119);
-            this.panelSubMenuCK.TabIndex = 12;
-            // 
-            // btnChuyenKhau
-            // 
-            this.btnChuyenKhau.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChuyenKhau.Font = new System.Drawing.Font("Leelawadee UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChuyenKhau.Location = new System.Drawing.Point(8, 74);
-            this.btnChuyenKhau.Name = "btnChuyenKhau";
-            this.btnChuyenKhau.Size = new System.Drawing.Size(236, 37);
-            this.btnChuyenKhau.TabIndex = 9;
-            this.btnChuyenKhau.Text = "Chuyển khẩu";
-            this.btnChuyenKhau.UseVisualStyleBackColor = true;
-            // 
-            // btnTraCuuPhieuThayDoiHoKhau
-            // 
-            this.btnTraCuuPhieuThayDoiHoKhau.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTraCuuPhieuThayDoiHoKhau.Font = new System.Drawing.Font("Leelawadee UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraCuuPhieuThayDoiHoKhau.Location = new System.Drawing.Point(8, 37);
-            this.btnTraCuuPhieuThayDoiHoKhau.Name = "btnTraCuuPhieuThayDoiHoKhau";
-            this.btnTraCuuPhieuThayDoiHoKhau.Size = new System.Drawing.Size(236, 37);
-            this.btnTraCuuPhieuThayDoiHoKhau.TabIndex = 10;
-            this.btnTraCuuPhieuThayDoiHoKhau.Text = "Tra cứu phiếu thay đổi hộ khẩu";
-            this.btnTraCuuPhieuThayDoiHoKhau.UseVisualStyleBackColor = true;
-            // 
-            // btnTraCuuBanKhaiNhanKhau
-            // 
-            this.btnTraCuuBanKhaiNhanKhau.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTraCuuBanKhaiNhanKhau.Font = new System.Drawing.Font("Leelawadee UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraCuuBanKhaiNhanKhau.Location = new System.Drawing.Point(8, 0);
-            this.btnTraCuuBanKhaiNhanKhau.Name = "btnTraCuuBanKhaiNhanKhau";
-            this.btnTraCuuBanKhaiNhanKhau.Size = new System.Drawing.Size(236, 37);
-            this.btnTraCuuBanKhaiNhanKhau.TabIndex = 8;
-            this.btnTraCuuBanKhaiNhanKhau.Text = "Tra cứu bản khai nhân khẩu";
-            this.btnTraCuuBanKhaiNhanKhau.UseVisualStyleBackColor = true;
-            // 
-            // btnQuanLyChuyenKhau
-            // 
-            this.btnQuanLyChuyenKhau.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQuanLyChuyenKhau.Font = new System.Drawing.Font("Leelawadee UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuanLyChuyenKhau.Location = new System.Drawing.Point(3, 537);
-            this.btnQuanLyChuyenKhau.Name = "btnQuanLyChuyenKhau";
-            this.btnQuanLyChuyenKhau.Size = new System.Drawing.Size(244, 37);
-            this.btnQuanLyChuyenKhau.TabIndex = 11;
-            this.btnQuanLyChuyenKhau.Text = "Chuyển khẩu";
-            this.btnQuanLyChuyenKhau.UseVisualStyleBackColor = true;
             // 
             // panelSubMenuQLTV
             // 
@@ -321,7 +257,6 @@
             this.Name = "FrmMain";
             this.Text = "Quản lý hộ khẩu";
             this.panelLeft.ResumeLayout(false);
-            this.panelSubMenuCK.ResumeLayout(false);
             this.panelSubMenuQLTV.ResumeLayout(false);
             this.panelSubMenuQLTT.ResumeLayout(false);
             this.panelSubMenuQLHK.ResumeLayout(false);
@@ -348,14 +283,9 @@
         private System.Windows.Forms.Button btnCapGiayTamTru;
         private System.Windows.Forms.Button btnQuanLyTamTru;
         private System.Windows.Forms.Button btnQuanLyTamVang;
-        private System.Windows.Forms.Panel panelSubMenuCK;
-        private System.Windows.Forms.Button btnQuanLyChuyenKhau;
         private System.Windows.Forms.Panel panelSubMenuQLTV;
         private System.Windows.Forms.Button btnTraCuuPhieuTamVang;
         private System.Windows.Forms.Button btnCapGiayTamVang;
-        private System.Windows.Forms.Button btnTraCuuBanKhaiNhanKhau;
-        private System.Windows.Forms.Button btnChuyenKhau;
-        private System.Windows.Forms.Button btnTraCuuPhieuThayDoiHoKhau;
     }
 }
 

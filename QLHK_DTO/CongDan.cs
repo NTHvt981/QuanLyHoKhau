@@ -8,20 +8,20 @@ namespace QLHK_DTO
 {
     public class CongDan
     {
-        private int ma = -1;
+        private int ma = Init.INT;
         private string soCmnd;
         private string soCccd;
         private string maHoKhau;
 
-        private string hoTen = "";
-        private DateTime ngaySinh = DateTime.Now;
-        private string gioiTinh = "";
-        private string queQuan = "";
-        private string quocTich = "";
-
-        private string diaChiThuongTru = "";
-        private string hoTenBo = "";
-        private string hoTenMe = "";
+        private string hoTen = Init.STRING;
+        private DateTime ngaySinh = Init.DATE;
+        private string gioiTinh = Init.STRING;
+        private string queQuan = Init.STRING;
+        private string quocTich = Init.STRING;
+        private string danToc = Init.STRING;
+        private string tonGiao = Init.STRING;
+        private string dacDiemNhanDang = Init.STRING;
+        private string diaChiHoKhau = Init.STRING;
 
         public int Ma { get => ma; set => ma = value; }
         public string SoCmnd { get => soCmnd; set => soCmnd = value; }
@@ -32,9 +32,10 @@ namespace QLHK_DTO
         public string GioiTinh { get => gioiTinh; set => gioiTinh = value; }
         public string QueQuan { get => queQuan; set => queQuan = value; }
         public string QuocTich { get => quocTich; set => quocTich = value; }
-        public string DiaChiThuongTru { get => diaChiThuongTru; set => diaChiThuongTru = value; }
-        public string HoTenBo { get => hoTenBo; set => hoTenBo = value; }
-        public string HoTenMe { get => hoTenMe; set => hoTenMe = value; }
+        public string DiaChiHoKhau { get => diaChiHoKhau; set => diaChiHoKhau = value; }
+        public string DanToc { get => danToc; set => danToc = value; }
+        public string TonGiao { get => tonGiao; set => tonGiao = value; }
+        public string DacDiemNhanDang { get => dacDiemNhanDang; set => dacDiemNhanDang = value; }
 
         public bool CoCmnd()
         {
@@ -49,23 +50,45 @@ namespace QLHK_DTO
         public void Update(Cmnd cmnd)
         {
             cmnd.HoTen = HoTen;
+            cmnd.SoCmnd = SoCmnd;
             cmnd.NgaySinh = NgaySinh;
             cmnd.QueQuan = QueQuan;
-            cmnd.DiaChiHoKhau = DiaChiThuongTru;
+            cmnd.DiaChiHoKhau = DiaChiHoKhau;
 
             cmnd.NgayCap = DateTime.Now;
+
+            cmnd.DacDiemNhanDang = DacDiemNhanDang;
+            cmnd.DanToc = DanToc;
+            cmnd.HoTen = HoTen;
+            cmnd.TonGiao = TonGiao;
         }
 
         public void Update(Cccd cccd)
         {
             cccd.HoTen = HoTen;
+            cccd.SoCccd = SoCccd;
             cccd.NgaySinh = NgaySinh;
             cccd.QueQuan = QueQuan;
-            cccd.DiaChiHoKhau = DiaChiThuongTru;
+            cccd.DiaChiHoKhau = DiaChiHoKhau;
             cccd.QuocTich = QuocTich;
             cccd.GioiTinh = GioiTinh;
 
             cccd.NgayCap = DateTime.Now;
+
+            cccd.DacDiemNhanDang = DacDiemNhanDang;
+            cccd.HoTen = HoTen;
+        }
+
+        public void SetChuHo(HoKhau hk)
+        {
+            hk.TenChuHo = HoTen;
+            hk.MaChuHo = Ma;
+        }
+
+        public void Update(PhieuTamVang ptv)
+        {
+            ptv.MaNguoiKhaiBao = Ma;
+            ptv.TenNguoiKhaiBao = HoTen;
         }
     }
 }

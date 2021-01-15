@@ -20,7 +20,6 @@ namespace QLHK_GUI
             btnQuanLyHoKhau.Click += BtnQuanLyHoKhau_Click; ;
             btnQuanLyTamVang.Click += BtnQuanLyTamVang_Click;
             btnQuanLyTamTru.Click += BtnQuanLyTamTru_Click;
-            btnQuanLyChuyenKhau.Click += BtnQuanLyChuyenKhau_Click;
 
             btnTraCuuHoKhau.Click += BtnTraCuuHoKhau_Click;
             btnTraCuuNhanKhau.Click += BtnTraCuuNhanKhau_Click;
@@ -31,16 +30,7 @@ namespace QLHK_GUI
             btnTraCuuPhieuTamVang.Click += BtnTraCuuPhieuTamVang_Click;
             btnTraCuuTamTru.Click += BtnTraCuuTamTru_Click;
 
-            btnTraCuuBanKhaiNhanKhau.Click += BtnTraCuuBanKhaiNhanKhau_Click;
-
-            btnChuyenKhau.Click += BtnChuyenKhau_Click;
-
             btnExit.Click += BtnExit_Click;
-        }
-
-        private void BtnChuyenKhau_Click(object sender, EventArgs e)
-        {
-            openChildForm(new FrmChuyenKhau());
         }
 
         private void BtnTraCuuTamTru_Click(object sender, EventArgs e)
@@ -55,11 +45,6 @@ namespace QLHK_GUI
         private void BtnTraCuuHoKhau_Click(object sender, EventArgs e)
         {
             openChildForm(new FrmDanhSachHoKhau());
-        }
-
-        private void BtnTraCuuBanKhaiNhanKhau_Click(object sender, EventArgs e)
-        {
-            openChildForm(new FrmDanhSachBanKhaiNhanKhau());
         }
 
         private void BtnTraCuuNhanKhau_Click(object sender, EventArgs e)
@@ -116,19 +101,6 @@ namespace QLHK_GUI
             }
         }
 
-        private void BtnQuanLyChuyenKhau_Click(object sender, EventArgs e)
-        {
-            if (panelSubMenuCK.Visible == false)
-            {
-                closeAllSubMenu();
-                openSubMenu(panelSubMenuCK);
-            }
-            else
-            {
-                panelSubMenuCK.Visible = false;
-            }
-        }
-
         private void BtnExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -169,7 +141,6 @@ namespace QLHK_GUI
             panelSubMenuQLHK.Visible = false;
             panelSubMenuQLTV.Visible = false;
             panelSubMenuQLTT.Visible = false;
-            panelSubMenuCK.Visible = false;
         }
 
         private void openSubMenu(Panel subMenu)

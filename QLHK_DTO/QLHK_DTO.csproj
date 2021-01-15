@@ -41,16 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BanKhaiNhanKhau.cs" />
     <Compile Include="Cccd.cs" />
     <Compile Include="Cmnd.cs" />
     <Compile Include="CongDan.cs" />
     <Compile Include="HoKhau.cs" />
+    <Compile Include="Init.cs" />
     <Compile Include="PhieuTamTru.cs" />
     <Compile Include="PhieuTamVang.cs" />
-    <Compile Include="PhieuThayDoiHoKhau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

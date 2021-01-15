@@ -169,9 +169,7 @@ namespace QLHK_GUI
             congDan.NgaySinh = dtpNgaySinh.Value;
             congDan.QueQuan = tbQueQuan.Text;
             congDan.QuocTich = tbQuocTich.Text;
-            congDan.DiaChiThuongTru = tbDiaChi.Text;
-            congDan.HoTenBo = tbHoTenBo.Text;
-            congDan.HoTenMe = tbHoTenMe.Text;
+            congDan.DiaChiHoKhau = tbDiaChi.Text;
         }
 
         private void setData(CongDan result)
@@ -184,9 +182,7 @@ namespace QLHK_GUI
             dtpNgaySinh.Value = result.NgaySinh;
             tbQueQuan.Text = result.QueQuan;
             tbQuocTich.Text = result.QuocTich;
-            tbDiaChi.Text = result.DiaChiThuongTru;
-            tbHoTenBo.Text = result.HoTenBo;
-            tbHoTenMe.Text = result.HoTenMe;
+            tbDiaChi.Text = result.DiaChiHoKhau;
         }
 
         private void enableSua()

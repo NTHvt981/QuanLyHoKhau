@@ -8,18 +8,18 @@ namespace QLHK_DTO
 {
     public class Cmnd
     {
-        private int ma = -1;
-        private string soCmnd = "";
-        private string hoTen = "";
-        private DateTime ngaySinh = DateTime.Now;
-        private string queQuan = "";
-        private string diaChiHoKhau = "";
-        private string danToc = "";
-        private string tonGiao = "";
-        private string dacDiemNhanDang = "";
-        private DateTime ngayCap = DateTime.Now;
-        private string noiCap = "";
-        private string nguoiCap = "";
+        private int ma = Init.INT;
+        private string soCmnd = Init.STRING;
+        private string hoTen = Init.STRING;
+        private DateTime ngaySinh = Init.DATE;
+        private string queQuan = Init.STRING;
+        private string diaChiHoKhau = Init.STRING;
+        private string danToc = Init.STRING;
+        private string tonGiao = Init.STRING;
+        private string dacDiemNhanDang = Init.STRING;
+        private DateTime ngayCap = Init.DATE;
+        private string noiCap = Init.STRING;
+        private string nguoiCap = Init.STRING;
 
         public string NguoiCap { get => nguoiCap; set => nguoiCap = value; }
         public string NoiCap { get => noiCap; set => noiCap = value; }
@@ -33,5 +33,19 @@ namespace QLHK_DTO
         public string HoTen { get => hoTen; set => hoTen = value; }
         public string SoCmnd { get => soCmnd; set => soCmnd = value; }
         public int Ma { get => ma; set => ma = value; }
+
+        public void Update(CongDan congDan)
+        {
+            congDan.HoTen = HoTen;
+            congDan.SoCmnd = SoCmnd;
+            congDan.NgaySinh = NgaySinh;
+            congDan.QueQuan = QueQuan;
+            congDan.DiaChiHoKhau = DiaChiHoKhau;
+
+            congDan.DacDiemNhanDang = DacDiemNhanDang;
+            congDan.DanToc = DanToc;
+            congDan.HoTen = HoTen;
+            congDan.TonGiao = TonGiao;
+        }
     }
 }

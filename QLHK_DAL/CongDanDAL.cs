@@ -24,8 +24,35 @@ namespace QLHK_DAL
         public bool Add(CongDan cd)
         {
             string query = string.Empty;
-            query += "INSERT INTO [CONG_DAN] ([SoCmnd], [SoCccd], [MaHoKhau], [HoTen], [NgaySinh], [GioiTinh], [QueQuan], [QuocTich], [DiaChiThuongTru], [HoTenBo], [HoTenMe])";
-            query += "VALUES (@SoCmnd, @SoCccd, @MaHoKhau, @HoTen, @NgaySinh, @GioiTinh, @QueQuan, @QuocTich, @DiaChiThuongTru, @HoTenBo, @HoTenMe)";
+            query += @"
+                INSERT INTO [CONG_DAN] (
+                    [SoCmnd], 
+                    [SoCccd], 
+                    [MaHoKhau], 
+                    [HoTen], 
+                    [NgaySinh], 
+                    [GioiTinh], 
+                    [QueQuan], 
+                    [QuocTich], 
+                    [DanToc], 
+                    [TonGiao], 
+                    [DacDiemNhanDang], 
+                    [DiaChiHoKhau]
+                    )";
+            query += @"VALUES (
+                @SoCmnd, 
+                @SoCccd, 
+                @MaHoKhau, 
+                @HoTen,  
+                @NgaySinh,
+                @GioiTinh, 
+                @QueQuan, 
+                @QuocTich, 
+                @DanToc, 
+                @TonGiao, 
+                @DacDiemNhanDang, 
+                @DiaChiHoKhau
+                )";
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
             {
 
@@ -35,28 +62,7 @@ namespace QLHK_DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@HoTen", cd.HoTen);
-                    cmd.Parameters.AddWithValue("@NgaySinh", cd.NgaySinh);
-                    cmd.Parameters.AddWithValue("@GioiTinh", cd.GioiTinh);
-                    cmd.Parameters.AddWithValue("@QueQuan", cd.QueQuan);
-                    cmd.Parameters.AddWithValue("@QuocTich", cd.QuocTich);
-                    cmd.Parameters.AddWithValue("@DiaChiThuongTru", cd.DiaChiThuongTru);
-                    cmd.Parameters.AddWithValue("@HoTenBo", cd.HoTenBo);
-                    cmd.Parameters.AddWithValue("@HoTenMe", cd.HoTenMe);
-
-                    if (!string.IsNullOrEmpty(cd.MaHoKhau))
-                        cmd.Parameters.AddWithValue("@MaHoKhau", cd.MaHoKhau);
-                    else
-                        cmd.Parameters.AddWithValue("@MaHoKhau", DBNull.Value);
-
-                    if (!string.IsNullOrEmpty(cd.SoCccd))
-                        cmd.Parameters.AddWithValue("@SoCccd", cd.SoCccd);
-                    else
-                        cmd.Parameters.AddWithValue("@SoCccd", DBNull.Value);
-                    if (!string.IsNullOrEmpty(cd.SoCmnd))
-                        cmd.Parameters.AddWithValue("@SoCmnd", cd.SoCmnd);
-                    else
-                        cmd.Parameters.AddWithValue("@SoCmnd", DBNull.Value);
+                    SetParam(cd, cmd);
 
                     try
                     {
@@ -74,6 +80,7 @@ namespace QLHK_DAL
             }
             return true;
         }
+
         public bool Update(CongDan cd)
         {
             string query = string.Empty;
@@ -86,9 +93,10 @@ namespace QLHK_DAL
             query += "[GioiTinh] = @GioiTinh, ";
             query += "[QueQuan] = @QueQuan, ";
             query += "[QuocTich] = @QuocTich, ";
-            query += "[DiaChiThuongTru] = @DiaChiThuongTru, ";
-            query += "[HoTenBo] = @HoTenBo, ";
-            query += "[HoTenMe] = @HoTenMe ";
+            query += "[DanToc] = @DanToc, ";
+            query += "[TonGiao] = @TonGiao, ";
+            query += "[DacDiemNhanDang] = @DacDiemNhanDang, ";
+            query += "[DiaChiHoKhau] = @DiaChiHoKhau ";
             query += "WHERE [Ma] = @Ma";
 
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
@@ -101,27 +109,7 @@ namespace QLHK_DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@Ma", cd.Ma);
-                    cmd.Parameters.AddWithValue("@MaHoKhau", cd.MaHoKhau);
-                    cmd.Parameters.AddWithValue("@HoTen", cd.HoTen);
-                    cmd.Parameters.AddWithValue("@NgaySinh", cd.NgaySinh);
-                    cmd.Parameters.AddWithValue("@GioiTinh", cd.GioiTinh);
-                    cmd.Parameters.AddWithValue("@QueQuan", cd.QueQuan);
-                    cmd.Parameters.AddWithValue("@QuocTich", cd.QuocTich);
-                    cmd.Parameters.AddWithValue("@DiaChiThuongTru", cd.DiaChiThuongTru);
-                    cmd.Parameters.AddWithValue("@HoTenBo", cd.HoTenBo);
-                    cmd.Parameters.AddWithValue("@HoTenMe", cd.HoTenMe);
-
-                    //cmd.Parameters.AddWithValue("@SoCccd", cd.SoCccd);
-                    //cmd.Parameters.AddWithValue("@SoCmnd", cd.SoCmnd);
-
-                    if (!string.IsNullOrEmpty(cd.SoCccd))
-                        cmd.Parameters.AddWithValue("@SoCccd", cd.SoCccd);
-                    else
-                        cmd.Parameters.AddWithValue("@SoCccd", DBNull.Value);
-                    if (!string.IsNullOrEmpty(cd.SoCmnd))
-                        cmd.Parameters.AddWithValue("@SoCmnd", cd.SoCmnd);
-                    else
-                        cmd.Parameters.AddWithValue("@SoCmnd", DBNull.Value);
+                    SetParam(cd, cmd);
 
                     try
                     {
@@ -258,7 +246,6 @@ namespace QLHK_DAL
             return cd;
         }
 
-
         public List<CongDan> ReadAllByMaHoKhau(string ma)
         {
             string query = string.Empty;
@@ -368,45 +355,32 @@ namespace QLHK_DAL
             return congDans;
         }
 
-        public CongDan ReadByMaHoKhau(string ma)
+
+        private static void SetParam(CongDan cd, SqlCommand cmd)
         {
-            string query = string.Empty;
-            query += "SELECT TOP 1 * ";
-            query += "FROM [CONG_DAN] WHERE [MaHoKhau]=@Ma";
+            cmd.Parameters.AddWithValue("@HoTen", cd.HoTen);
+            cmd.Parameters.AddWithValue("@NgaySinh", cd.NgaySinh);
+            cmd.Parameters.AddWithValue("@GioiTinh", cd.GioiTinh);
+            cmd.Parameters.AddWithValue("@QueQuan", cd.QueQuan);
+            cmd.Parameters.AddWithValue("@QuocTich", cd.QuocTich);
+            cmd.Parameters.AddWithValue("@DanToc", cd.DanToc);
+            cmd.Parameters.AddWithValue("@TonGiao", cd.TonGiao);
+            cmd.Parameters.AddWithValue("@DacDiemNhanDang", cd.DacDiemNhanDang);
+            cmd.Parameters.AddWithValue("@DiaChiHoKhau", cd.DiaChiHoKhau);
 
-            CongDan cd = new CongDan();
+            if (!string.IsNullOrEmpty(cd.MaHoKhau))
+                cmd.Parameters.AddWithValue("@MaHoKhau", cd.MaHoKhau);
+            else
+                cmd.Parameters.AddWithValue("@MaHoKhau", DBNull.Value);
 
-            using (SqlConnection con = new SqlConnection(ConnectionString))
-            {
-
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = con;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.CommandText = query;
-                    cmd.Parameters.AddWithValue("@Ma", ma);
-
-                    try
-                    {
-                        con.Open();
-                        SqlDataReader reader = null;
-
-                        reader = cmd.ExecuteReader();
-                        reader.Read();
-
-                        cd = GetFromReader(reader);
-
-                        con.Close();
-                        con.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        con.Close();
-                        return null;
-                    }
-                }
-            }
-            return cd;
+            if (!string.IsNullOrEmpty(cd.SoCccd))
+                cmd.Parameters.AddWithValue("@SoCccd", cd.SoCccd);
+            else
+                cmd.Parameters.AddWithValue("@SoCccd", DBNull.Value);
+            if (!string.IsNullOrEmpty(cd.SoCmnd))
+                cmd.Parameters.AddWithValue("@SoCmnd", cd.SoCmnd);
+            else
+                cmd.Parameters.AddWithValue("@SoCmnd", DBNull.Value);
         }
 
         private CongDan GetFromReader(SqlDataReader reader)
@@ -421,9 +395,10 @@ namespace QLHK_DAL
             cd.GioiTinh = reader["GioiTinh"].ToString();
             cd.QueQuan = reader["QueQuan"].ToString();
             cd.QuocTich = reader["QuocTich"].ToString();
-            cd.DiaChiThuongTru = reader["DiaChiThuongTru"].ToString();
-            cd.HoTenBo = reader["HoTenBo"].ToString();
-            cd.HoTenMe = reader["HoTenMe"].ToString();
+            cd.DiaChiHoKhau = reader["DiaChiHoKhau"].ToString();
+            cd.DanToc = reader["DanToc"].ToString();
+            cd.TonGiao = reader["TonGiao"].ToString();
+            cd.DacDiemNhanDang = reader["DacDiemNhanDang"].ToString();
 
             string NgaySinh;
             NgaySinh = reader["NgaySinh"].ToString();

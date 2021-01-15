@@ -8,27 +8,33 @@ namespace QLHK_DTO
 {
     public class HoKhau
     {
-        private int ma = -1;
-        private string soSo = "";
-        private string chuHo = "";
-        private string diaChi = "";
-        private DateTime ngayLap = DateTime.Now;
-        private string loaiSo = "";
-        private string lyDoLap = "";
-        private string nguoiLam = "";
+        private int ma = Init.INT;
+        private string soSo = Init.STRING;
+        private int maChuHo = Init.INT;
+        private string tenChuHo = Init.STRING;
+        private string diaChi = Init.STRING;
+        private string loaiSo = Init.STRING;
+        private string lyDoCap = Init.STRING;
+        private DateTime ngayCap = Init.DATE;
+        private string noiCap = Init.STRING;
+        private string nguoiCap = Init.STRING;
+        public List<CongDan> congDans = new List<CongDan>(0);
+        public CongDan chuHo = null;
 
         public int Ma { get => ma; set => ma = value; }
         public string SoSo { get => soSo; set => soSo = value; }
-        public string ChuHo { get => chuHo; set => chuHo = value; }
+        public int MaChuHo { get => maChuHo; set => maChuHo = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }
-        public DateTime NgayLap { get => ngayLap; set => ngayLap = value; }
+        public DateTime NgayCap { get => ngayCap; set => ngayCap = value; }
         public string LoaiSo { get => loaiSo; set => loaiSo = value; }
-        public string LyDoLap { get => lyDoLap; set => lyDoLap = value; }
-        public string NguoiLam { get => nguoiLam; set => nguoiLam = value; }
+        public string LyDoCap { get => lyDoCap; set => lyDoCap = value; }
+        public string NguoiCap { get => nguoiCap; set => nguoiCap = value; }
+        public string NoiCap { get => noiCap; set => noiCap = value; }
+        public string TenChuHo { get => tenChuHo; set => tenChuHo = value; }
 
         public void Update(CongDan congDan)
         {
-            congDan.DiaChiThuongTru = DiaChi;
+            congDan.DiaChiHoKhau = DiaChi;
             congDan.MaHoKhau = SoSo;
         }
     }

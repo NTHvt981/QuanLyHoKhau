@@ -25,7 +25,7 @@ namespace QLHK_GUI
                 SetThemState();
 
                 phieuTamTru = new PhieuTamTru();
-                phieuTamTru.NgayGhi = DateTime.Now;
+                phieuTamTru.NgayCap = DateTime.Now;
             }
             else
             {
@@ -57,7 +57,30 @@ namespace QLHK_GUI
 
         private void PrintDoc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            Font title = new Font("Times New Roman", 20, FontStyle.Bold);
+            Font label = new Font("Times New Roman", 10, FontStyle.Regular);
+            Font content = new Font("Times New Roman", 10, FontStyle.Italic);
 
+            e.Graphics.DrawString("Giấy tạm trú có thời hạn", title, Brushes.Red, new Point(100, 50));
+            e.Graphics.DrawString("Họ và tên: ", 
+                label, Brushes.Black, new Point(50, 100));
+            e.Graphics.DrawString(phieuTamTru.NguoiKhaiBao, content, Brushes.Black, new Point(125, 100));
+
+            e.Graphics.DrawString("Nơi cấp: ",
+                label, Brushes.Black, new Point(50, 125));
+            e.Graphics.DrawString(phieuTamTru.NoiCap, content, Brushes.Black, new Point(125, 125));
+
+            e.Graphics.DrawString("Ngày cấp: ",
+                label, Brushes.Black, new Point(50, 150));
+            e.Graphics.DrawString(phieuTamTru.NgayCap.ToString(), content, Brushes.Black, new Point(125, 150));
+            
+            e.Graphics.DrawString("Người cấp: ",
+                label, Brushes.Black, new Point(50, 175));
+            e.Graphics.DrawString(phieuTamTru.NguoiCap, content, Brushes.Black, new Point(125, 175));
+
+            e.Graphics.DrawString("Nơi dăng ký thường trú: ",
+                label, Brushes.Black, new Point(50, 200));
+            e.Graphics.DrawString(phieuTamTru.NoiTamTru, content, Brushes.Black, new Point(200, 200));
         }
 
         private void BtnLuuThem_Click(object sender, EventArgs e)
@@ -116,11 +139,11 @@ namespace QLHK_GUI
             phieuTamTru.NguoiKhaiBao = tbNguoiKhaiBao.Text;
             phieuTamTru.LyDo = tbLyDo.Text;
             phieuTamTru.NoiTamTru = tbNoiTamTru.Text;
-            phieuTamTru.NoiGhi = tbNoiLap.Text;
-            phieuTamTru.NgayGhi = DateTime.Now;
-            phieuTamTru.TenCanBo = tbTenCanBo.Text;
+            phieuTamTru.NoiCap = tbNoiLap.Text;
+            phieuTamTru.NgayCap = DateTime.Now;
+            phieuTamTru.NguoiCap = tbTenCanBo.Text;
 
-            dtpNgayGhi.Value = phieuTamTru.NgayGhi;
+            dtpNgayGhi.Value = phieuTamTru.NgayCap;
         }
 
         private void setData(PhieuTamTru result)
@@ -128,9 +151,9 @@ namespace QLHK_GUI
             tbNguoiKhaiBao.Text = result.NguoiKhaiBao;
             tbLyDo.Text = result.LyDo;
             tbNoiTamTru.Text = result.NoiTamTru;
-            tbNoiLap.Text = result.NoiGhi;
-            dtpNgayGhi.Value = result.NgayGhi;
-            tbTenCanBo.Text = result.TenCanBo;
+            tbNoiLap.Text = result.NoiCap;
+            dtpNgayGhi.Value = result.NgayCap;
+            tbTenCanBo.Text = result.NguoiCap;
         }
 
         private void enableSua()

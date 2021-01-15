@@ -27,21 +27,25 @@ namespace QLHK_DAL
             query += @"
                 INSERT INTO [HO_KHAU] (
                     [SoSo], 
-                    [ChuHo], 
+                    [MaChuHo], 
+                    [TenChuHo], 
                     [DiaChi], 
-                    [NgayLap], 
                     [LoaiSo], 
-                    [LyDoLap], 
-                    [NguoiLam]
+                    [LyDoCap], 
+                    [NgayCap], 
+                    [NoiCap], 
+                    [NguoiCap]
                     )";
             query += @"VALUES (
-                @SoSo, 
-                @ChuHo, 
-                @DiaChi, 
-                @NgayLap, 
-                @LoaiSo, 
-                @LyDoLap, 
-                @NguoiLam
+                    @SoSo, 
+                    @MaChuHo, 
+                    @TenChuHo, 
+                    @DiaChi, 
+                    @LoaiSo, 
+                    @LyDoCap, 
+                    @NgayCap, 
+                    @NoiCap, 
+                    @NguoiCap
                 )";
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
             {
@@ -52,13 +56,7 @@ namespace QLHK_DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@SoSo", cd.SoSo);
-                    cmd.Parameters.AddWithValue("@ChuHo", cd.ChuHo);
-                    cmd.Parameters.AddWithValue("@DiaChi", cd.DiaChi);
-                    cmd.Parameters.AddWithValue("@NgayLap", cd.NgayLap);
-                    cmd.Parameters.AddWithValue("@LoaiSo", cd.LoaiSo);
-                    cmd.Parameters.AddWithValue("@LyDoLap", cd.LyDoLap);
-                    cmd.Parameters.AddWithValue("@NguoiLam", cd.NguoiLam);
+                    SetParam(cd, cmd);
 
                     try
                     {
@@ -81,12 +79,14 @@ namespace QLHK_DAL
             string query = string.Empty;
             query += "UPDATE [HO_KHAU] SET ";
             query += "[SoSo] = @SoSo, ";
-            query += "[ChuHo] = @ChuHo, ";
+            query += "[MaChuHo] = @MaChuHo, ";
+            query += "[TenChuHo] = @TenChuHo, ";
             query += "[DiaChi] = @DiaChi, ";
-            query += "[NgayLap] = @NgayLap, ";
             query += "[LoaiSo] = @LoaiSo, ";
-            query += "[LyDoLap] = @LyDoLap, ";
-            query += "[NguoiLam] = @NguoiLam ";
+            query += "[LyDoCap] = @LyDoCap, ";
+            query += "[NgayCap] = @NgayCap, ";
+            query += "[NoiCap] = @NoiCap, ";
+            query += "[NguoiCap] = @NguoiCap ";
             query += "WHERE [Ma] = @Ma";
 
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
@@ -99,13 +99,7 @@ namespace QLHK_DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@Ma", cd.Ma);
-                    cmd.Parameters.AddWithValue("@SoSo", cd.SoSo);
-                    cmd.Parameters.AddWithValue("@ChuHo", cd.ChuHo);
-                    cmd.Parameters.AddWithValue("@DiaChi", cd.DiaChi);
-                    cmd.Parameters.AddWithValue("@NgayLap", cd.NgayLap);
-                    cmd.Parameters.AddWithValue("@LoaiSo", cd.LoaiSo);
-                    cmd.Parameters.AddWithValue("@LyDoLap", cd.LyDoLap);
-                    cmd.Parameters.AddWithValue("@NguoiLam", cd.NguoiLam);
+                    SetParam(cd, cmd);
 
                     try
                     {
@@ -123,6 +117,7 @@ namespace QLHK_DAL
             }
             return true;
         }
+
         public bool Delete(HoKhau cd)
         {
             string query = string.Empty;
@@ -232,11 +227,10 @@ namespace QLHK_DAL
             query += @"select * from [HO_KHAU]
                     where
                         SoSo like @Param or
-                        ChuHo like @Param or
+                        MaChuHo like @Param or
+                        TenChuHo like @Param or
                         DiaChi like @Param or
                         LoaiSo like @Param or
-                        LyDoLap like @Param or
-                        NguoiLam like @Param
             ";
 
             List<HoKhau> congDans = new List<HoKhau>();
@@ -278,6 +272,19 @@ namespace QLHK_DAL
                 }
             }
             return congDans;
+        }
+
+        private static void SetParam(HoKhau cd, SqlCommand cmd)
+        {
+            cmd.Parameters.AddWithValue("@SoSo", cd.SoSo);
+            cmd.Parameters.AddWithValue("@MaChuHo", cd.MaChuHo);
+            cmd.Parameters.AddWithValue("@TenChuHo", cd.TenChuHo);
+            cmd.Parameters.AddWithValue("@DiaChi", cd.DiaChi);
+            cmd.Parameters.AddWithValue("@LoaiSo", cd.LoaiSo);
+            cmd.Parameters.AddWithValue("@LyDoCap", cd.LyDoCap);
+            cmd.Parameters.AddWithValue("@NgayCap", cd.NgayCap);
+            cmd.Parameters.AddWithValue("@NoiCap", cd.NoiCap);
+            cmd.Parameters.AddWithValue("@NguoiCap", cd.NguoiCap);
         }
 
         public HoKhau Read(string ma)
@@ -327,12 +334,14 @@ namespace QLHK_DAL
 
             hk.Ma = int.Parse(reader["Ma"].ToString());
             hk.SoSo = reader["SoSo"].ToString();
-            hk.ChuHo = reader["ChuHo"].ToString();
+            hk.MaChuHo = int.Parse(reader["MaChuHo"].ToString());
+            hk.TenChuHo = reader["TenChuHo"].ToString();
             hk.DiaChi = reader["DiaChi"].ToString();
-            hk.NgayLap = DateTime.Parse(reader["NgayLap"].ToString());
             hk.LoaiSo = reader["LoaiSo"].ToString();
-            hk.LyDoLap = reader["LyDoLap"].ToString();
-            hk.NguoiLam = reader["NguoiLam"].ToString();
+            hk.LyDoCap = reader["LyDoCap"].ToString();
+            hk.NgayCap = DateTime.Parse(reader["NgayCap"].ToString());
+            hk.NoiCap = reader["NoiCap"].ToString();
+            hk.NguoiCap = reader["NguoiCap"].ToString();
 
             return hk;
         }

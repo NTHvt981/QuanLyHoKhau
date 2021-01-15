@@ -53,9 +53,9 @@ namespace QLHK_DAL
                     cmd.Parameters.AddWithValue("@NguoiKhaiBao", ptt.NguoiKhaiBao);
                     cmd.Parameters.AddWithValue("@NoiTamTru", ptt.NoiTamTru);
                     cmd.Parameters.AddWithValue("@LyDo", ptt.LyDo);
-                    cmd.Parameters.AddWithValue("@NgayGhi", ptt.NgayGhi);
-                    cmd.Parameters.AddWithValue("@NoiGhi", ptt.NoiGhi);
-                    cmd.Parameters.AddWithValue("@TenCanBo", ptt.TenCanBo);
+                    cmd.Parameters.AddWithValue("@NgayGhi", ptt.NgayCap);
+                    cmd.Parameters.AddWithValue("@NoiGhi", ptt.NoiCap);
+                    cmd.Parameters.AddWithValue("@TenCanBo", ptt.NguoiCap);
 
                     try
                     {
@@ -98,9 +98,9 @@ namespace QLHK_DAL
                     cmd.Parameters.AddWithValue("@NguoiKhaiBao", ptt.NguoiKhaiBao);
                     cmd.Parameters.AddWithValue("@NoiTamTru", ptt.NoiTamTru);
                     cmd.Parameters.AddWithValue("@LyDo", ptt.LyDo);
-                    cmd.Parameters.AddWithValue("@NgayGhi", ptt.NgayGhi);
-                    cmd.Parameters.AddWithValue("@NoiGhi", ptt.NoiGhi);
-                    cmd.Parameters.AddWithValue("@TenCanBo", ptt.TenCanBo);
+                    cmd.Parameters.AddWithValue("@NgayGhi", ptt.NgayCap);
+                    cmd.Parameters.AddWithValue("@NoiGhi", ptt.NoiCap);
+                    cmd.Parameters.AddWithValue("@TenCanBo", ptt.NguoiCap);
 
                     try
                     {
@@ -324,14 +324,14 @@ namespace QLHK_DAL
             ptt.NguoiKhaiBao = reader["NguoiKhaiBao"].ToString();
             ptt.NoiTamTru = reader["NoiTamTru"].ToString();
             ptt.LyDo = reader["LyDo"].ToString();
-            ptt.NoiGhi = reader["NoiGhi"].ToString();
-            ptt.TenCanBo = reader["TenCanBo"].ToString();
+            ptt.NoiCap = reader["NoiGhi"].ToString();
+            ptt.NguoiCap = reader["TenCanBo"].ToString();
 
             string NgayGhi;
             NgayGhi = reader["NgayGhi"].ToString();
 
             if (!string.IsNullOrEmpty(NgayGhi.Trim()))
-                ptt.NgayGhi = DateTime.Parse(NgayGhi);
+                ptt.NgayCap = DateTime.Parse(NgayGhi);
 
             return ptt;
         }

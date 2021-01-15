@@ -26,34 +26,26 @@ namespace QLHK_DAL
             string query = string.Empty;
             query += @"
                 INSERT INTO [PHIEU_TAM_VANG] (
-                    [SoCmndCccd], 
-                    [NguoiKhaiBao], 
-                    [NgheNghiep], 
-                    [NoiLamViec], 
-                    [ThoiGianBatDau], 
-                    [ThoiGianKetThuc], 
+                    [LyDo], 
+                    [MaNguoiKhaiBao], 
+                    [TenNguoiKhaiBao], 
+                    [NgayCap], 
+                    [NguoiCap], 
+                    [NoiCap], 
                     [NoiTamTru],
-                    [LyDo],
-                    [QuanHeChuHo],
-                    [SoNha],
-                    [DanhSachTreEm],
-                    [NgayKhaiBao],
-                    [TenCanBo]
+                    [ThoiGianBatDau],
+                    [ThoiGianKetThuc]
                     )";
             query += @"VALUES (
-                @SoCmndCccd, 
-                @NguoiKhaiBao, 
-                @NgheNghiep, 
-                @NoiLamViec, 
-                @ThoiGianBatDau, 
-                @ThoiGianKetThuc, 
-                @NoiTamTru, 
-                @LyDo, 
-                @QuanHeChuHo, 
-                @SoNha, 
-                @DanhSachTreEm, 
-                @NgayKhaiBao, 
-                @TenCanBo
+                    @LyDo, 
+                    @MaNguoiKhaiBao, 
+                    @TenNguoiKhaiBao, 
+                    @NgayCap, 
+                    @NguoiCap, 
+                    @NoiCap, 
+                    @NoiTamTru,
+                    @ThoiGianBatDau,
+                    @ThoiGianKetThuc
                 )";
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
             {
@@ -64,19 +56,7 @@ namespace QLHK_DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@SoCmndCccd", ptv.SoCmndCccd);
-                    cmd.Parameters.AddWithValue("@NguoiKhaiBao", ptv.NguoiKhaiBao);
-                    cmd.Parameters.AddWithValue("@NgheNghiep", ptv.NgheNghiep);
-                    cmd.Parameters.AddWithValue("@NoiLamViec", ptv.NoiLamViec);
-                    cmd.Parameters.AddWithValue("@ThoiGianBatDau", ptv.ThoiGianBatDau);
-                    cmd.Parameters.AddWithValue("@ThoiGianKetThuc", ptv.ThoiGianKetThuc);
-                    cmd.Parameters.AddWithValue("@NoiTamTru", ptv.NoiTamTru);
-                    cmd.Parameters.AddWithValue("@LyDo", ptv.LyDo);
-                    cmd.Parameters.AddWithValue("@QuanHeChuHo", ptv.QuanHeChuHo);
-                    cmd.Parameters.AddWithValue("@SoNha", ptv.SoNha);
-                    cmd.Parameters.AddWithValue("@DanhSachTreEm", ptv.DanhSachTreEm);
-                    cmd.Parameters.AddWithValue("@NgayKhaiBao", ptv.NgayKhaiBao);
-                    cmd.Parameters.AddWithValue("@TenCanBo", ptv.TenCanBo);
+                    SetParam(ptv, cmd);
 
                     try
                     {
@@ -98,19 +78,16 @@ namespace QLHK_DAL
         {
             string query = string.Empty;
             query += "UPDATE [PHIEU_TAM_VANG] SET ";
-            query += "[SoCmndCccd] = @SoCmndCccd, ";
-            query += "[NguoiKhaiBao] = @NguoiKhaiBao, ";
-            query += "[NgheNghiep] = @NgheNghiep, ";
-            query += "[NoiLamViec] = @NoiLamViec, ";
-            query += "[ThoiGianBatDau] = @ThoiGianBatDau, ";
-            query += "[ThoiGianKetThuc] = @ThoiGianKetThuc, ";
-            query += "[NoiTamTru] = @NoiTamTru, ";
             query += "[LyDo] = @LyDo, ";
-            query += "[QuanHeChuHo] = @QuanHeChuHo, ";
-            query += "[SoNha] = @SoNha, ";
-            query += "[DanhSachTreEm] = @DanhSachTreEm, ";
-            query += "[NgayKhaiBao] = @NgayKhaiBao, ";
-            query += "[TenCanBo] = @TenCanBo ";
+            query += "[MaNguoiKhaiBao] = @MaNguoiKhaiBao, ";
+            query += "[TenNguoiKhaiBao] = @TenNguoiKhaiBao, ";
+            query += "[NgayCap] = @NgayCap, ";
+            query += "[NguoiCap] = @NguoiCap, ";
+            query += "[NoiCap] = @NoiCap, ";
+            query += "[NoiTamTru] = @NoiTamTru, ";
+            query += "[NoiTamTru] = @NoiTamTru, ";
+            query += "[ThoiGianBatDau] = @ThoiGianBatDau, ";
+            query += "[ThoiGianKetThuc] = @ThoiGianKetThuc ";
             query += "WHERE [Ma] = @Ma";
 
             using (SqlConnection _cnn = new SqlConnection(ConnectionString))
@@ -123,19 +100,7 @@ namespace QLHK_DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@Ma", ptv.Ma);
-                    cmd.Parameters.AddWithValue("@SoCmndCccd", ptv.SoCmndCccd);
-                    cmd.Parameters.AddWithValue("@NguoiKhaiBao", ptv.NguoiKhaiBao);
-                    cmd.Parameters.AddWithValue("@NgheNghiep", ptv.NgheNghiep);
-                    cmd.Parameters.AddWithValue("@NoiLamViec", ptv.NoiLamViec);
-                    cmd.Parameters.AddWithValue("@ThoiGianBatDau", ptv.ThoiGianBatDau);
-                    cmd.Parameters.AddWithValue("@ThoiGianKetThuc", ptv.ThoiGianKetThuc);
-                    cmd.Parameters.AddWithValue("@NoiTamTru", ptv.NoiTamTru);
-                    cmd.Parameters.AddWithValue("@LyDo", ptv.LyDo);
-                    cmd.Parameters.AddWithValue("@QuanHeChuHo", ptv.QuanHeChuHo);
-                    cmd.Parameters.AddWithValue("@SoNha", ptv.SoNha);
-                    cmd.Parameters.AddWithValue("@DanhSachTreEm", ptv.DanhSachTreEm);
-                    cmd.Parameters.AddWithValue("@NgayKhaiBao", ptv.NgayKhaiBao);
-                    cmd.Parameters.AddWithValue("@TenCanBo", ptv.TenCanBo);
+                    SetParam(ptv, cmd);
 
                     try
                     {
@@ -153,6 +118,7 @@ namespace QLHK_DAL
             }
             return true;
         }
+
         public bool Delete(PhieuTamVang ptv)
         {
             string query = string.Empty;
@@ -261,19 +227,7 @@ namespace QLHK_DAL
             string query = string.Empty;
             query += @"select * from [PHIEU_TAM_VANG]
                     where
-                        SoCmndCccd like @Param or
-                        NguoiKhaiBao like @Param or
-                        NgheNghiep like @Param or
-                        NoiLamViec like @Param or
-                        convert(nvarchar(25), ThoiGianBatDau, 25) like @Param or
-                        convert(nvarchar(25), ThoiGianKetThuc, 25) like @Param or
-                        NoiTamTru like @Param or
-                        LyDo like @Param or
-                        QuanHeChuHo like @Param or
-                        SoNha like @Param or
-                        DanhSachTreEm like @Param or
-                        convert(nvarchar(25), NgayKhaiBao, 25) like @Param or
-                        TenCanBo like @Param
+                        
             ";
 
             List<PhieuTamVang> congDans = new List<PhieuTamVang>();
@@ -358,26 +312,35 @@ namespace QLHK_DAL
             return ptv;
         }
 
+        private static void SetParam(PhieuTamVang ptv, SqlCommand cmd)
+        {
+            cmd.Parameters.AddWithValue("@LyDo", ptv.LyDo);
+            cmd.Parameters.AddWithValue("@MaNguoiKhaiBao", ptv.MaNguoiKhaiBao);
+            cmd.Parameters.AddWithValue("@TenNguoiKhaiBao", ptv.TenNguoiKhaiBao);
+            cmd.Parameters.AddWithValue("@NgayCap", ptv.NgayCap);
+            cmd.Parameters.AddWithValue("@NguoiCap", ptv.NguoiCap);
+            cmd.Parameters.AddWithValue("@NoiCap", ptv.NoiCap);
+            cmd.Parameters.AddWithValue("@NoiTamTru", ptv.NoiTamTru);
+            cmd.Parameters.AddWithValue("@ThoiGianBatDau", ptv.ThoiGianBatDau);
+            cmd.Parameters.AddWithValue("@ThoiGianKetThuc", ptv.ThoiGianKetThuc);
+        }
+
         private PhieuTamVang GetFromReader(SqlDataReader reader)
         {
             PhieuTamVang ptv = new PhieuTamVang();
 
-            ptv.Ma = int.Parse(reader["Ma"].ToString());
-            ptv.SoCmndCccd = reader["SoCmndCccd"].ToString();
-            ptv.NguoiKhaiBao = reader["NguoiKhaiBao"].ToString();
-            ptv.NgheNghiep = reader["NgheNghiep"].ToString();
-            ptv.NoiLamViec = reader["NoiLamViec"].ToString();
-            ptv.NoiTamTru = reader["NoiTamTru"].ToString();
             ptv.LyDo = reader["LyDo"].ToString();
-            ptv.QuanHeChuHo = reader["QuanHeChuHo"].ToString();
-            ptv.SoNha = reader["SoNha"].ToString();
-            ptv.DanhSachTreEm = reader["DanhSachTreEm"].ToString();
-            ptv.TenCanBo = reader["TenCanBo"].ToString();
+            ptv.Ma = int.Parse( reader["Ma"].ToString());
+            ptv.MaNguoiKhaiBao = int.Parse(reader["MaNguoiKhaiBao"].ToString());
+            ptv.TenNguoiKhaiBao = reader["TenNguoiKhaiBao"].ToString();
+            ptv.NguoiCap = reader["NguoiCap"].ToString();
+            ptv.NoiCap = reader["NoiCap"].ToString();
+            ptv.NoiTamTru = reader["NoiTamTru"].ToString();
 
-            string ThoiGianBatDau, ThoiGianKetThuc, NgayKhaiBao;
+            string ThoiGianBatDau, ThoiGianKetThuc, NgayCap;
             ThoiGianBatDau = reader["ThoiGianBatDau"].ToString();
             ThoiGianKetThuc = reader["ThoiGianKetThuc"].ToString();
-            NgayKhaiBao = reader["NgayKhaiBao"].ToString();
+            NgayCap = reader["NgayCap"].ToString();
 
             if (!string.IsNullOrEmpty(ThoiGianBatDau.Trim()))
                 ptv.ThoiGianBatDau = DateTime.Parse(ThoiGianBatDau);
@@ -385,8 +348,8 @@ namespace QLHK_DAL
             if (!string.IsNullOrEmpty(ThoiGianKetThuc.Trim()))
                 ptv.ThoiGianKetThuc = DateTime.Parse(ThoiGianKetThuc);
 
-            if (!string.IsNullOrEmpty(NgayKhaiBao.Trim()))
-                ptv.NgayKhaiBao = DateTime.Parse(NgayKhaiBao);
+            if (!string.IsNullOrEmpty(NgayCap.Trim()))
+                ptv.NgayCap = DateTime.Parse(NgayCap);
 
             return ptv;
         }

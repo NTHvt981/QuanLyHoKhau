@@ -26,7 +26,7 @@ namespace QLHK_GUI
                 SetThemState();
 
                 phieuTamVang = new PhieuTamVang();
-                phieuTamVang.NgayKhaiBao = DateTime.Now;
+                phieuTamVang.NgayCap = DateTime.Now;
                 phieuTamVang.ThoiGianBatDau = DateTime.Now;
                 phieuTamVang.ThoiGianKetThuc = DateTime.Now;
             }
@@ -102,24 +102,7 @@ namespace QLHK_GUI
 
         private void getData()
         {
-            phieuTamVang.NguoiKhaiBao = tbHoTen.Text;
-            phieuTamVang.SoCmndCccd = tbCmndCccd.Text;
-            phieuTamVang.NgheNghiep = tbNgheNghiep.Text;
-            phieuTamVang.NoiLamViec = tbNoiLamViec.Text;
-            phieuTamVang.SoNha = tbDiaChi.Text;
 
-            phieuTamVang.QuanHeChuHo = tbQuanHe.Text;
-            phieuTamVang.TenCanBo = tbNguoiCapPhieu.Text;
-            phieuTamVang.DanhSachTreEm = tbDanhSachTreEm.Text;
-
-            phieuTamVang.NoiTamTru = tbNoiTamTru.Text;
-            phieuTamVang.LyDo = tbLyDo.Text;
-
-            phieuTamVang.ThoiGianBatDau = dtpTgBd.Value;
-            phieuTamVang.ThoiGianKetThuc = dtpTgKt.Value;
-            phieuTamVang.NgayKhaiBao = DateTime.Now;
-
-            dtpNgayGhi.Value = phieuTamVang.NgayKhaiBao;
         }
 
         private void enableSua()
@@ -168,22 +151,22 @@ namespace QLHK_GUI
 
         private void setData(PhieuTamVang result)
         {
-            tbHoTen.Text = result.NguoiKhaiBao;
-            tbCmndCccd.Text = result.SoCmndCccd;
-            tbNgheNghiep.Text  = result.NgheNghiep ;
-            tbNoiLamViec.Text  = result.NoiLamViec ;
-            tbDiaChi.Text = result.SoNha ;
+            //tbHoTen.Text = result.NguoiKhaiBao;
+            //tbCmndCccd.Text = result.SoCmndCccd;
+            //tbNgheNghiep.Text  = result.NgheNghiep ;
+            //tbNoiLamViec.Text  = result.NoiLamViec ;
+            //tbDiaChi.Text = result.SoNha ;
 
-            tbQuanHe.Text = result.QuanHeChuHo ;
-            tbNguoiCapPhieu.Text = result.TenCanBo ;
-            tbDanhSachTreEm.Text = result.DanhSachTreEm;
+            //tbQuanHe.Text = result.QuanHeChuHo ;
+            //tbNguoiCapPhieu.Text = result.NguoiCap ;
+            //tbDanhSachTreEm.Text = result.DanhSachTreEm;
 
-            tbNoiTamTru.Text = result.NoiTamTru ;
-            tbLyDo.Text = result.LyDo ;
+            //tbNoiTamTru.Text = result.NoiTamTru ;
+            //tbLyDo.Text = result.LyDo ;
 
-            dtpTgBd.Value = result.ThoiGianBatDau;
-            dtpTgKt.Value = result.ThoiGianKetThuc;
-            dtpNgayGhi.Value = result.NgayKhaiBao;
+            //dtpTgBd.Value = result.ThoiGianBatDau;
+            //dtpTgKt.Value = result.ThoiGianKetThuc;
+            //dtpNgayGhi.Value = result.NgayKhaiBao;
         }
 
         private void SetThemState()
