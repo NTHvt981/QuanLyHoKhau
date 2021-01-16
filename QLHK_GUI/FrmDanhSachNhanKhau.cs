@@ -16,10 +16,16 @@ namespace QLHK_GUI
     {
         CongDanBUS bus = new CongDanBUS();
         List<CongDan> listCongDan;
-        CongDan phieuTamVangSelected = new CongDan();
-        public FrmDanhSachNhanKhau()
+        CongDan congDanSelected = new CongDan();
+        FormType formType;
+
+        public delegate void MyEvent(CongDan congDan);
+        public event MyEvent ValueEvent;
+        public FrmDanhSachNhanKhau(FormType t)
         {
             InitializeComponent();
+
+            formType = t;
 
             dgvNhanKhau.CellClick += DgvNhanKhau_CellClick;
 
@@ -27,6 +33,9 @@ namespace QLHK_GUI
             btnThem.Click += BtnThem_Click;
             btnXemChiTiet.Click += BtnXemChiTiet_Click;
             btnXoa.Click += BtnXoa_Click;
+
+            btnHoKhau.Click += BtnHoKhau_Click;
+            btnPhieuTamVang.Click += BtnPhieuTamVang_Click;
 
             tbTimKiem.TextChanged += TbTimKiem_TextChanged;
             tbTimKiem.Enter += tbTimKiem_Enter;
@@ -41,9 +50,21 @@ namespace QLHK_GUI
             loadData_Vao_GridView();
         }
 
+        private void BtnPhieuTamVang_Click(object sender, EventArgs e)
+        {
+            ValueEvent?.Invoke(congDanSelected);
+            Close();
+        }
+
+        private void BtnHoKhau_Click(object sender, EventArgs e)
+        {
+            ValueEvent?.Invoke(congDanSelected);
+            Close();
+        }
+
         private void BtnXoa_Click(object sender, EventArgs e)
         {
-            bool result = bus.Delete(phieuTamVangSelected);
+            bool result = bus.Delete(congDanSelected);
             if (result)
             {
                 listCongDan = bus.ReadAll();
@@ -59,14 +80,14 @@ namespace QLHK_GUI
 
         private void BtnXemChiTiet_Click(object sender, EventArgs e)
         {
-            FrmChiTietNhanKhau frm = new FrmChiTietNhanKhau(phieuTamVangSelected);
-            frm.Show();
+            FrmChiTietNhanKhau frm = new FrmChiTietNhanKhau(congDanSelected);
+            frm.Show(this);
         }
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
-            FrmChiTietNhanKhauChoDSNK frm = new FrmChiTietNhanKhauChoDSNK(null);
-            frm.Show();
+            FrmChiTietNhanKhau frm = new FrmChiTietNhanKhau(null);
+            frm.Show(this);
         }
 
         private void BtnTaiLai_Click(object sender, EventArgs e)
@@ -92,7 +113,7 @@ namespace QLHK_GUI
             else
             {
                 enableSelect();
-                phieuTamVangSelected = listCongDan[numrow];
+                congDanSelected = listCongDan[numrow];
             }
         }
 
@@ -183,12 +204,30 @@ namespace QLHK_GUI
         {
             btnXemChiTiet.Enabled = true;
             btnXoa.Enabled = true;
+
+            switch (formType)
+            {
+                case FormType.MAIN:
+                    break;
+                case FormType.CHI_TIET_HO_KHAU:
+                    btnHoKhau.Enabled = true;
+                    break;
+                case FormType.CHI_TIET_PHIEU_TAM_VANG:
+                    btnPhieuTamVang.Enabled = true;
+                    break;
+                case FormType.CHI_TIET_PHIEU_TAM_TRU:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void disableSelect()
         {
             btnXemChiTiet.Enabled = false;
             btnXoa.Enabled = false;
+            btnHoKhau.Enabled = false;
+            btnPhieuTamVang.Enabled = false;
         }
     }
 }

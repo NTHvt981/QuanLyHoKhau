@@ -16,7 +16,21 @@ namespace QLHK_BUS
         }
         public bool Update(CongDan cd)
         {
-            return CongDanDAL.GetInstance().Update(cd);
+            bool result = CongDanDAL.GetInstance().Update(cd);
+
+            if (result)
+            {
+                HoKhau hk = HoKhauDAL.GetInstance().ReadByMaChuHo(cd.Ma);
+
+                if (hk != null)
+                {
+                    cd.SetChuHo(hk);
+                    HoKhauDAL.GetInstance().Update(hk);
+                }
+
+            }
+
+            return result;
         }
         public bool Delete(CongDan cd)
         {
@@ -35,7 +49,7 @@ namespace QLHK_BUS
 
         public List<CongDan> ReadAllByMaHoKhau(string soSo)
         {
-            return CongDanDAL.GetInstance().ReadAllByMaHoKhau(soSo);
+            return CongDanDAL.GetInstance().ReadAllBySoHoKhau(soSo);
         }
         public List<CongDan> ReadAllByKeyWord(string key)
         {

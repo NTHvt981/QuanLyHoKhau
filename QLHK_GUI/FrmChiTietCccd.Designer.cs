@@ -65,6 +65,7 @@
             // 
             this.tbNguoiCap.Location = new System.Drawing.Point(141, 497);
             this.tbNguoiCap.Name = "tbNguoiCap";
+            this.tbNguoiCap.ReadOnly = true;
             this.tbNguoiCap.Size = new System.Drawing.Size(487, 22);
             this.tbNguoiCap.TabIndex = 152;
             // 

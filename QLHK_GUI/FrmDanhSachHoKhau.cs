@@ -17,8 +17,12 @@ namespace QLHK_GUI
         HoKhauBUS hkBus = new HoKhauBUS();
         List<HoKhau> listHoKhau;
         HoKhau hoKhauSelected;
+        FormType formType;
 
-        public FrmDanhSachHoKhau()
+        public delegate void MyEvent(HoKhau hoKhau);
+        public event MyEvent ValueEvent;
+
+        public FrmDanhSachHoKhau(FormType type)
         {
             InitializeComponent();
 
@@ -28,6 +32,8 @@ namespace QLHK_GUI
             btnXemChiTiet.Click += BtnXemChiTiet_Click;
             btnXoa.Click += BtnXoa_Click;
             btnThem.Click += BtnThem_Click;
+
+            btnNhanKhau.Click += BtnNhanKhau_Click;
 
             tbTimKiem.TextChanged += TbTimKiem_TextChanged;
             tbTimKiem.Enter += tbTimKiem_Enter;
@@ -39,10 +45,15 @@ namespace QLHK_GUI
             this.Load += FrmDanhSachHoKhau_Load;
         }
 
+        private void BtnNhanKhau_Click(object sender, EventArgs e)
+        {
+            ValueEvent?.Invoke(hoKhauSelected);
+        }
+
         private void BtnThem_Click(object sender, EventArgs e)
         {
             FrmChiTietHoKhau frm = new FrmChiTietHoKhau(null);
-            frm.Show();
+            frm.Show(this);
         }
 
         private void BtnXoa_Click(object sender, EventArgs e)
@@ -61,7 +72,7 @@ namespace QLHK_GUI
         private void BtnXemChiTiet_Click(object sender, EventArgs e)
         {
             FrmChiTietHoKhau frm = new FrmChiTietHoKhau(hoKhauSelected);
-            frm.Show();
+            frm.Show(this);
         }
 
         private void FrmDanhSachHoKhau_Load(object sender, EventArgs e)
@@ -88,13 +99,11 @@ namespace QLHK_GUI
             numrow = e.RowIndex;
             if (numrow == -1)
             {
-                btnXemChiTiet.Enabled = false;
-                btnXoa.Enabled = false;
+                disableSelect();
             }
             else
             {
-                btnXemChiTiet.Enabled = true;
-                btnXoa.Enabled = true;
+                enableSelect();
                 hoKhauSelected = listHoKhau[numrow];
             }
         }
@@ -137,14 +146,14 @@ namespace QLHK_GUI
             dgvHoKhau.DataSource = listHoKhau;
 
             DataGridViewTextBoxColumn clSo = new DataGridViewTextBoxColumn();
-            clSo.Name = "SoSo";
+            clSo.Name = "SoHoKhau";
             clSo.HeaderText = "Số sổ HK";
-            clSo.DataPropertyName = "SoSo";
+            clSo.DataPropertyName = "SoHoKhau";
             dgvHoKhau.Columns.Add(clSo);
 
             DataGridViewTextBoxColumn clTen = new DataGridViewTextBoxColumn();
             clTen.Name = "ChuHo";
-            clTen.HeaderText = "Họ tên";
+            clTen.HeaderText = "Tên chủ hộ";
             clTen.DataPropertyName = "ChuHo";
             dgvHoKhau.Columns.Add(clTen);
 
@@ -161,15 +170,30 @@ namespace QLHK_GUI
             dgvHoKhau.Columns.Add(clLoaiSo);
 
             DataGridViewTextBoxColumn clNgayLap = new DataGridViewTextBoxColumn();
-            clNgayLap.Name = "NgayLap";
+            clNgayLap.Name = "NgayCap";
             clNgayLap.HeaderText = "Ngày lập sổ";
-            clNgayLap.DataPropertyName = "NgayLap";
+            clNgayLap.DataPropertyName = "NgayCap";
             dgvHoKhau.Columns.Add(clNgayLap);
 
             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dgvHoKhau.DataSource];
             myCurrencyManager.Refresh();
 
             dgvHoKhau.Invalidate();
+        }
+        private void enableSelect()
+        {
+            btnXemChiTiet.Enabled = true;
+            btnXoa.Enabled = true;
+
+            if (formType == FormType.CHI_TIET_NHAN_KHAU)
+                btnNhanKhau.Enabled = true;
+        }
+
+        private void disableSelect()
+        {
+            btnXemChiTiet.Enabled = false;
+            btnXoa.Enabled = false;
+            btnNhanKhau.Enabled = false;
         }
     }
 }

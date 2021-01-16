@@ -107,46 +107,46 @@ namespace QLHK_GUI
 
         private void enableSua()
         {
-            tbHoTen.Enabled = true;
-            tbCmndCccd.Enabled = true;
-            tbNgheNghiep.Enabled = true;
-            tbNoiLamViec.Enabled = true;
-            tbDiaChi.Enabled = true;
+            //tbHoTen.Enabled = true;
+            //tbCmndCccd.Enabled = true;
+            //tbNgheNghiep.Enabled = true;
+            //tbNoiLamViec.Enabled = true;
+            //tbDiaChi.Enabled = true;
 
-            tbQuanHe.Enabled = true;
-            tbNguoiCapPhieu.Enabled = true;
-            tbDanhSachTreEm.Enabled = true;
+            //tbQuanHe.Enabled = true;
+            //tbNguoiCapPhieu.Enabled = true;
+            //tbDanhSachTreEm.Enabled = true;
 
-            tbNoiTamTru.Enabled = true;
-            tbLyDo.Enabled = true;
+            //tbNoiTamTru.Enabled = true;
+            //tbLyDo.Enabled = true;
 
-            dtpTgBd.Enabled = true;
-            dtpTgKt.Enabled = true;
+            //dtpTgBd.Enabled = true;
+            //dtpTgKt.Enabled = true;
 
-            btnLuuSua.Enabled = true;
-            btnQuayLai.Enabled = true;
+            //btnLuuSua.Enabled = true;
+            //btnQuayLai.Enabled = true;
         }
 
         private void disableSua()
         {
-            tbHoTen.Enabled = false;
-            tbCmndCccd.Enabled = false;
-            tbNgheNghiep.Enabled = false;
-            tbNoiLamViec.Enabled = false;
-            tbDiaChi.Enabled = false;
+            //tbHoTen.Enabled = false;
+            //tbCmndCccd.Enabled = false;
+            //tbNgheNghiep.Enabled = false;
+            //tbNoiLamViec.Enabled = false;
+            //tbDiaChi.Enabled = false;
 
-            tbQuanHe.Enabled = false;
-            tbNguoiCapPhieu.Enabled = false;
-            tbDanhSachTreEm.Enabled = false;
+            //tbQuanHe.Enabled = false;
+            //tbNguoiCapPhieu.Enabled = false;
+            //tbDanhSachTreEm.Enabled = false;
 
-            tbNoiTamTru.Enabled = false;
-            tbLyDo.Enabled = false;
+            //tbNoiTamTru.Enabled = false;
+            //tbLyDo.Enabled = false;
 
-            dtpTgBd.Enabled = false;
-            dtpTgKt.Enabled = false;
+            //dtpTgBd.Enabled = false;
+            //dtpTgKt.Enabled = false;
 
-            btnLuuSua.Enabled = false;
-            btnQuayLai.Enabled = false;
+            //btnLuuSua.Enabled = false;
+            //btnQuayLai.Enabled = false;
         }
 
         private void setData(PhieuTamVang result)

@@ -246,7 +246,7 @@ namespace QLHK_DAL
             return cd;
         }
 
-        public List<CongDan> ReadAllByMaHoKhau(string ma)
+        public List<CongDan> ReadAllBySoHoKhau(string ma)
         {
             string query = string.Empty;
             query += "SELECT * ";
@@ -305,11 +305,9 @@ namespace QLHK_DAL
                         MaHoKhau like @Param or
                         HoTen like @Param or
                         GioiTinh like @Param or
-                        QueQuan like @Param or
                         QuocTich like @Param or
-                        DiaChiThuongTru like @Param or
-                        HoTenBo like @Param or
-                        HoTenMe like @Param
+                        DanToc like @Param or
+                        TonGiao like @Param
             ";
 
             List<CongDan> congDans = new List<CongDan>();

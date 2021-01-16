@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLHK_DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,14 @@ using System.Windows.Forms;
 
 namespace QLHK_GUI
 {
+    public enum FormType
+    {
+        MAIN,
+        CHI_TIET_HO_KHAU,
+        CHI_TIET_NHAN_KHAU,
+        CHI_TIET_PHIEU_TAM_VANG,
+        CHI_TIET_PHIEU_TAM_TRU,
+    }
     public partial class FrmMain : Form
     {
         public FrmMain()
@@ -27,8 +36,8 @@ namespace QLHK_GUI
             btnCapGiayTamTru.Click += BtnCapGiayTamTru_Click;
             btnCapGiayTamVang.Click += BtnCapGiayTamVang_Click; ;
 
-            btnTraCuuPhieuTamVang.Click += BtnTraCuuPhieuTamVang_Click;
-            btnTraCuuTamTru.Click += BtnTraCuuTamTru_Click;
+            btnDanhSachTamVang.Click += BtnTraCuuPhieuTamVang_Click;
+            btnDanhSachTamTru.Click += BtnTraCuuTamTru_Click;
 
             btnExit.Click += BtnExit_Click;
         }
@@ -44,12 +53,12 @@ namespace QLHK_GUI
         }
         private void BtnTraCuuHoKhau_Click(object sender, EventArgs e)
         {
-            openChildForm(new FrmDanhSachHoKhau());
+            openChildForm(new FrmDanhSachHoKhau(FormType.MAIN));
         }
 
         private void BtnTraCuuNhanKhau_Click(object sender, EventArgs e)
         {
-            openChildForm(new FrmDanhSachNhanKhau());
+            openChildForm(new FrmDanhSachNhanKhau(FormType.MAIN));
         }
 
         private void BtnCapGiayTamTru_Click(object sender, EventArgs e)
@@ -103,23 +112,8 @@ namespace QLHK_GUI
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
+            TaiKhoan.TaiKhoanHienTai = null;
             Close();
-        }
-
-
-        private void BtnTamTru_Click(object sender, EventArgs e)
-        {
-            openChildForm(new FrmDanhSachTamTru());
-        }
-
-        private void BtnTamVang_Click(object sender, EventArgs e)
-        {
-            openChildForm(new FrmDanhSachTamVang());
-        }
-
-        private void BtnTraCuu_Click(object sender, EventArgs e)
-        {
-            openChildForm(new FrmDanhSachHoKhau());
         }
 
         private Form activeForm = null;

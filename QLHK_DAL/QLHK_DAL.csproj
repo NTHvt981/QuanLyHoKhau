@@ -46,9 +46,11 @@
     <Compile Include="CmndDAL.cs" />
     <Compile Include="CongDanDAL.cs" />
     <Compile Include="HoKhauDAL.cs" />
+    <Compile Include="PhieuChuyenKhauDAL.cs" />
     <Compile Include="PhieuTamTruDAL.cs" />
     <Compile Include="PhieuTamVangDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaiKhoanDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QLHK_DTO\QLHK_DTO.csproj">

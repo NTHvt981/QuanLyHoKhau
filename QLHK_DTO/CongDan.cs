@@ -23,6 +23,9 @@ namespace QLHK_DTO
         private string dacDiemNhanDang = Init.STRING;
         private string diaChiHoKhau = Init.STRING;
 
+        public Cmnd cmnd;
+        public Cccd cccd;
+
         public int Ma { get => ma; set => ma = value; }
         public string SoCmnd { get => soCmnd; set => soCmnd = value; }
         public string SoCccd { get => soCccd; set => soCccd = value; }
@@ -83,6 +86,11 @@ namespace QLHK_DTO
         {
             hk.TenChuHo = HoTen;
             hk.MaChuHo = Ma;
+        }
+        public void EmptyHoKhau()
+        {
+            MaHoKhau = "";
+            DiaChiHoKhau = "";
         }
 
         public void Update(PhieuTamVang ptv)

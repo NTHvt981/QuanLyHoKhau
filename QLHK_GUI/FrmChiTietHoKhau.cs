@@ -39,10 +39,10 @@ namespace QLHK_GUI
                 rbKhong.Select();
 
                 hoKhau = hk;
-                listCongDan = congDanBUS.ReadAllByMaHoKhau(hoKhau.SoSo);
+                setData(hoKhau);
+                listCongDan = congDanBUS.ReadAllByMaHoKhau(hoKhau.SoHoKhau);
             }
 
-            setData(hoKhau);
             disableSelect();
 
             SetDataGridView();
@@ -50,20 +50,35 @@ namespace QLHK_GUI
             btnLuuSua.Click += BtnLuuSua_Click;
             btnLuuThem.Click += BtnLuuThem_Click;
             btnQuayLai.Click += BtnQuayLai_Click;
+
             btnXemNhanKhau.Click += BtnXemNhanKhau_Click;
             btnThemNhanKhau.Click += BtnThemNhanKhau_Click;
             btnXoaNhanKhau.Click += BtnXoaNhanKhau_Click;
+            btnChonChuHo.Click += BtnChonChuHo_Click;
 
             rbCo.Click += RbCo_Click;
             rbKhong.Click += RbKhong_Click;
 
-            tbTimKiem.TextChanged += TbTimKiem_TextChanged;
-            tbTimKiem.Enter += tbTimKiem_Enter;
-            tbTimKiem.Leave += tbTimKiem_Leave;
-            tbTimKiem_SetText();
-
             loadData_Vao_GridView();
             dgvCongDan.CellClick += DgvCongDan_CellClick;
+
+            tbDiaChi.TextChanged += TbDiaChi_TextChanged;
+        }
+
+        private void BtnChonChuHo_Click(object sender, EventArgs e)
+        {
+            if (congDanSelect == null) return;
+
+            congDanSelect.SetChuHo(hoKhau);
+            tbChuSo.Text = congDanSelect.HoTen;
+        }
+
+        private void TbDiaChi_TextChanged(object sender, EventArgs e)
+        {
+            foreach (CongDan congDan in listCongDan)
+            {
+                hoKhau.Update(congDan);
+            }
         }
 
         private void BtnLuuSua_Click(object sender, EventArgs e)
@@ -91,47 +106,33 @@ namespace QLHK_GUI
             {
                 hoKhau.Update(congDan);
 
-                if (congDanBUS.ExistInDatabase(congDan))
-                {
-                    result = congDanBUS.Update(congDan);
+                result = congDanBUS.Update(congDan);
 
-                    if (result)
-                    {
-                        MessageBox.Show("Cập nhật nhân khẩu thành công");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Có lỗi trong Cập nhật nhân khẩu");
-                        return;
-                    }
+                if (result)
+                {
+                    MessageBox.Show("Cập nhật nhân khẩu thành công");
                 }
                 else
                 {
-                    result = congDanBUS.Add(congDan);
-
-                    if (result)
-                    {
-                        MessageBox.Show("thêm nhân khẩu thành công");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Có lỗi trong thêm nhân khẩu");
-                        return;
-                    }
+                    MessageBox.Show("Có lỗi trong Cập nhật nhân khẩu");
+                    return;
                 }
             }
 
             foreach (CongDan congDan in listCongDanRemove)
             {
-                result = congDanBUS.Delete(congDan);
+                congDan.MaHoKhau = Init.STRING;
+                congDan.DiaChiHoKhau = Init.STRING;
+
+                result = congDanBUS.Update(congDan);
 
                 if (result)
                 {
-                    MessageBox.Show("xoá nhân khẩu thành công");
+                    MessageBox.Show("Cập nhật nhân khẩu thành công");
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi trong xoá nhân khẩu");
+                    MessageBox.Show("Có lỗi trong Cập nhật nhân khẩu");
                     return;
                 }
             }
@@ -141,8 +142,15 @@ namespace QLHK_GUI
         {
             getData();
 
+            string error = "";
+            if (!hoKhauBUS.Validate(hoKhau, ref error))
+            {
+                MessageBox.Show(error);
+                return;
+            }
+
             bool result;
-            result = hoKhauBUS.Update(hoKhau);
+            result = hoKhauBUS.Add(hoKhau);
             if (result)
             {
                 MessageBox.Show("Thêm Hộ khẩu thành công");
@@ -158,29 +166,37 @@ namespace QLHK_GUI
 
         private void BtnXoaNhanKhau_Click(object sender, EventArgs e)
         {
-            listCongDanRemove.Add(congDanSelect);
-            listCongDan.Remove(congDanSelect);
+            if (!listCongDanRemove.Contains(congDanSelect))
+                listCongDanRemove.Add(congDanSelect);
+
+            if (listCongDan.Contains(congDanSelect))
+                listCongDan.Remove(congDanSelect);
+
             disableSelect();
 
             MessageBox.Show("Xoá nhân khẩu thành công\n chọn Lưu trong màn hình thông tin nhân khẩu để có thể cập nhật trong CSDL");
 
-            dgvCongDan.DataSource = listCongDan;
-
-            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dgvCongDan.DataSource];
-            myCurrencyManager.Refresh();
-            dgvCongDan.Invalidate();
+            loadData_Vao_GridView();
         }
 
         private void BtnThemNhanKhau_Click(object sender, EventArgs e)
         {
-            congDanThem = new CongDan();
-            congDanThem.MaHoKhau = hoKhau.SoSo;
-            congDanThem.DiaChiHoKhau = hoKhau.DiaChi;
-            congDanThem.NgaySinh = DateTime.Now;
+            FrmDanhSachNhanKhau frm = new FrmDanhSachNhanKhau(FormType.CHI_TIET_HO_KHAU);
+            frm.ValueEvent += Frm_ValueEvent;
+            frm.Show(this);
+        }
 
-            FrmChiTietNhanKhau frm = new FrmChiTietNhanKhau(congDanThem);
-            frm.AddCongDanEvent += Frm_AddCongDanEvent;
-            frm.Show();
+        private void Frm_ValueEvent(CongDan congDan)
+        {
+            hoKhau.Update(congDan);
+
+            if (listCongDanRemove.Contains(congDan))
+                listCongDanRemove.Remove(congDan);
+
+            if (!listCongDan.Contains(congDan))
+                listCongDan.Add(congDan);
+
+            loadData_Vao_GridView();
         }
 
         private void Frm_AddCongDanEvent(object sender, CongDan cd)
@@ -234,30 +250,6 @@ namespace QLHK_GUI
         private void RbCo_Click(object sender, EventArgs e)
         {
             enableSua();
-        }
-        private void TbTimKiem_TextChanged(object sender, EventArgs e)
-        {
-            //listHoKhau = hkBus.ReadAllByKeyWord(tbTimKiem.Text);
-            //loadData_Vao_GridView();
-        }
-
-        protected void tbTimKiem_SetText()
-        {
-            tbTimKiem.Text = "Tìm kiếm";
-            tbTimKiem.ForeColor = Color.Gray;
-        }
-
-        private void tbTimKiem_Enter(object sender, EventArgs e)
-        {
-            if (tbTimKiem.ForeColor == Color.Black)
-                return;
-            tbTimKiem.Text = "";
-            tbTimKiem.ForeColor = Color.Black;
-        }
-        private void tbTimKiem_Leave(object sender, EventArgs e)
-        {
-            if (tbTimKiem.Text.Trim() == "")
-                tbTimKiem_SetText();
         }
 
         private void loadData_Vao_GridView()
@@ -316,34 +308,29 @@ namespace QLHK_GUI
 
         private void setData(HoKhau result)
         {
-            //tbSoSo.Text = result.SoSo;
-            //tbChuSo.Text = result.MaChuHo;
-            //tbLoaiSo.Text = result.LoaiSo;
-            //dtpNgayLap.Value = result.NgayLap;
-            //tbLyDoLap.Text = result.LyDoLap;
-            //tbNguoiLap.Text = result.NguoiLam;
-            //tbDiaChi.Text = result.DiaChi;
+            tbSoSo.Text = result.SoHoKhau;
+            tbChuSo.Text = result.TenChuHo;
+            tbLoaiSo.Text = result.LoaiSo;
+            dtpNgayLap.Value = result.NgayCap;
+            tbLyDoLap.Text = result.LyDoCap;
+            tbNguoiLap.Text = result.NguoiCap;
+            tbDiaChi.Text = result.DiaChi;
         }
 
         private void getData()
         {
-            //hoKhau.SoSo = tbSoSo.Text;
-            //hoKhau.MaChuHo = tbChuSo.Text;
-            //hoKhau.LoaiSo = tbLoaiSo.Text;
-            //hoKhau.NgayLap = dtpNgayLap.Value;
-            //hoKhau.LyDoLap = tbLyDoLap.Text;
-            //hoKhau.NguoiLam = tbNguoiLap.Text;
-            //hoKhau.DiaChi = tbDiaChi.Text;
+            hoKhau.SoHoKhau = tbSoSo.Text;
+            hoKhau.TenChuHo = tbChuSo.Text;
+            hoKhau.LoaiSo = tbLoaiSo.Text;
+            hoKhau.NgayCap = dtpNgayLap.Value;
+            hoKhau.LyDoCap = tbLyDoLap.Text;
+            hoKhau.NguoiCap = tbNguoiLap.Text;
+            hoKhau.DiaChi = tbDiaChi.Text;
         }
 
         private void enableSua()
         {
-            tbSoSo.Enabled = true;
-            tbChuSo.Enabled = true;
             tbLoaiSo.Enabled = true;
-            dtpNgayLap.Enabled = true;
-            tbLyDoLap.Enabled = true;
-            tbNguoiLap.Enabled = true;
             tbDiaChi.Enabled = true;
 
             btnLuuSua.Enabled = true;
@@ -354,7 +341,6 @@ namespace QLHK_GUI
         private void disableSua()
         {
             tbSoSo.Enabled = false;
-            tbChuSo.Enabled = false;
             tbLoaiSo.Enabled = false;
             dtpNgayLap.Enabled = false;
             tbLyDoLap.Enabled = false;
@@ -370,12 +356,14 @@ namespace QLHK_GUI
         {
             btnXemNhanKhau.Enabled = true;
             btnXoaNhanKhau.Enabled = true;
+            btnChonChuHo.Enabled = true;
         }
 
         private void disableSelect()
         {
             btnXemNhanKhau.Enabled = false;
             btnXoaNhanKhau.Enabled = false;
+            btnChonChuHo.Enabled = false;
         }
 
         private void SetThemHoKhau()
@@ -385,6 +373,9 @@ namespace QLHK_GUI
             rbKhong.Visible = false;
             btnQuayLai.Visible = false;
             btnLuuSua.Visible = false;
+
+            tbNguoiLap.Text = TaiKhoan.TaiKhoanHienTai.TenHienThi;
+            dtpNgayLap.Value = Init.DATE;
         }
 
         private void SetSuaHoKhau()

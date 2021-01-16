@@ -37,6 +37,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvHoKhau = new System.Windows.Forms.DataGridView();
+            this.btnNhanKhau = new System.Windows.Forms.Button();
             this.panelTimKiem.SuspendLayout();
             this.panelThaoTac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoKhau)).BeginInit();
@@ -76,6 +77,7 @@
             // panelThaoTac
             // 
             this.panelThaoTac.Controls.Add(this.btnTaiLai);
+            this.panelThaoTac.Controls.Add(this.btnNhanKhau);
             this.panelThaoTac.Controls.Add(this.btnXemChiTiet);
             this.panelThaoTac.Controls.Add(this.btnThem);
             this.panelThaoTac.Controls.Add(this.btnXoa);
@@ -88,8 +90,8 @@
             // 
             // btnTaiLai
             // 
-            this.btnTaiLai.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnTaiLai.Location = new System.Drawing.Point(480, 16);
+            this.btnTaiLai.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnTaiLai.Location = new System.Drawing.Point(16, 16);
             this.btnTaiLai.Name = "btnTaiLai";
             this.btnTaiLai.Size = new System.Drawing.Size(110, 29);
             this.btnTaiLai.TabIndex = 3;
@@ -140,6 +142,16 @@
             this.dgvHoKhau.Size = new System.Drawing.Size(866, 318);
             this.dgvHoKhau.TabIndex = 6;
             // 
+            // btnNhanKhau
+            // 
+            this.btnNhanKhau.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnNhanKhau.Location = new System.Drawing.Point(441, 16);
+            this.btnNhanKhau.Name = "btnNhanKhau";
+            this.btnNhanKhau.Size = new System.Drawing.Size(149, 29);
+            this.btnNhanKhau.TabIndex = 4;
+            this.btnNhanKhau.Text = "Xếp vô nhân khẩu";
+            this.btnNhanKhau.UseVisualStyleBackColor = true;
+            // 
             // FrmDanhSachHoKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -171,5 +183,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnXemChiTiet;
         private System.Windows.Forms.Button btnTaiLai;
+        private System.Windows.Forms.Button btnNhanKhau;
     }
 }

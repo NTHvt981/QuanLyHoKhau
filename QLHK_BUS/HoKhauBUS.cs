@@ -20,6 +20,14 @@ namespace QLHK_BUS
         }
         public bool Delete(HoKhau cd)
         {
+            List<CongDan> congDans = CongDanDAL.GetInstance().ReadAllBySoHoKhau(cd.SoHoKhau);
+
+            foreach (CongDan congDan in congDans)
+            {
+                congDan.EmptyHoKhau();
+                CongDanDAL.GetInstance().Update(congDan);
+            }
+
             return HoKhauDAL.GetInstance().Delete(cd);
         }
         public bool DeleteAll()
@@ -41,10 +49,23 @@ namespace QLHK_BUS
             return HoKhauDAL.GetInstance().Read(ma);
         }
 
-        public bool Validate(CongDan cd, ref string error)
+        public bool Validate(HoKhau cd, ref string error)
         {
+            if (DKSoSoTrong(cd, ref error))
+                return false;
 
             return true;
+        }
+
+        private bool DKSoSoTrong(HoKhau cd, ref string error)
+        {
+            if (string.IsNullOrEmpty(cd.SoHoKhau))
+            {
+                error = "Số sổ hộ khẩu trống";
+                return true;
+            }
+
+            return false;
         }
 
     }

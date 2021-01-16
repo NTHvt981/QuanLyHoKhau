@@ -9,7 +9,7 @@ namespace QLHK_DTO
     public class HoKhau
     {
         private int ma = Init.INT;
-        private string soSo = Init.STRING;
+        private string soHoKhau = Init.STRING;
         private int maChuHo = Init.INT;
         private string tenChuHo = Init.STRING;
         private string diaChi = Init.STRING;
@@ -22,7 +22,7 @@ namespace QLHK_DTO
         public CongDan chuHo = null;
 
         public int Ma { get => ma; set => ma = value; }
-        public string SoSo { get => soSo; set => soSo = value; }
+        public string SoHoKhau { get => soHoKhau; set => soHoKhau = value; }
         public int MaChuHo { get => maChuHo; set => maChuHo = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }
         public DateTime NgayCap { get => ngayCap; set => ngayCap = value; }
@@ -35,7 +35,7 @@ namespace QLHK_DTO
         public void Update(CongDan congDan)
         {
             congDan.DiaChiHoKhau = DiaChi;
-            congDan.MaHoKhau = SoSo;
+            congDan.MaHoKhau = SoHoKhau;
         }
     }
 }

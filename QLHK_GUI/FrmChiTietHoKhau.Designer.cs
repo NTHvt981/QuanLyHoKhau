@@ -53,8 +53,8 @@
             this.lbNhanKhau = new System.Windows.Forms.Label();
             this.btnXemNhanKhau = new System.Windows.Forms.Button();
             this.btnQuayLai = new System.Windows.Forms.Button();
-            this.tbTimKiem = new System.Windows.Forms.TextBox();
             this.btnLuuThem = new System.Windows.Forms.Button();
+            this.btnChonChuHo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCongDan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,6 +80,7 @@
             // 
             this.tbChuSo.Location = new System.Drawing.Point(105, 92);
             this.tbChuSo.Name = "tbChuSo";
+            this.tbChuSo.ReadOnly = true;
             this.tbChuSo.Size = new System.Drawing.Size(322, 22);
             this.tbChuSo.TabIndex = 3;
             // 
@@ -87,11 +88,11 @@
             // 
             this.lbChuSo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbChuSo.AutoSize = true;
-            this.lbChuSo.Location = new System.Drawing.Point(47, 95);
+            this.lbChuSo.Location = new System.Drawing.Point(19, 95);
             this.lbChuSo.Name = "lbChuSo";
-            this.lbChuSo.Size = new System.Drawing.Size(52, 17);
+            this.lbChuSo.Size = new System.Drawing.Size(80, 17);
             this.lbChuSo.TabIndex = 2;
-            this.lbChuSo.Text = "Chủ sổ";
+            this.lbChuSo.Text = "Tên chủ hộ";
             this.lbChuSo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbLoaiSo
@@ -132,8 +133,10 @@
             // 
             // tbNguoiLap
             // 
+            this.tbNguoiLap.Enabled = false;
             this.tbNguoiLap.Location = new System.Drawing.Point(522, 92);
             this.tbNguoiLap.Name = "tbNguoiLap";
+            this.tbNguoiLap.ReadOnly = true;
             this.tbNguoiLap.Size = new System.Drawing.Size(322, 22);
             this.tbNguoiLap.TabIndex = 9;
             // 
@@ -141,7 +144,7 @@
             // 
             this.lbNguoiLap.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbNguoiLap.AutoSize = true;
-            this.lbNguoiLap.Location = new System.Drawing.Point(448, 97);
+            this.lbNguoiLap.Location = new System.Drawing.Point(450, 95);
             this.lbNguoiLap.Name = "lbNguoiLap";
             this.lbNguoiLap.Size = new System.Drawing.Size(68, 17);
             this.lbNguoiLap.TabIndex = 8;
@@ -161,6 +164,7 @@
             // 
             // dtpNgayLap
             // 
+            this.dtpNgayLap.Enabled = false;
             this.dtpNgayLap.Location = new System.Drawing.Point(523, 21);
             this.dtpNgayLap.Name = "dtpNgayLap";
             this.dtpNgayLap.Size = new System.Drawing.Size(321, 22);
@@ -197,7 +201,7 @@
             // 
             // btnTaiLai
             // 
-            this.btnTaiLai.Location = new System.Drawing.Point(406, 568);
+            this.btnTaiLai.Location = new System.Drawing.Point(48, 572);
             this.btnTaiLai.Name = "btnTaiLai";
             this.btnTaiLai.Size = new System.Drawing.Size(110, 29);
             this.btnTaiLai.TabIndex = 19;
@@ -234,9 +238,9 @@
             // 
             // btnLuuSua
             // 
-            this.btnLuuSua.Location = new System.Drawing.Point(336, 603);
+            this.btnLuuSua.Location = new System.Drawing.Point(251, 603);
             this.btnLuuSua.Name = "btnLuuSua";
-            this.btnLuuSua.Size = new System.Drawing.Size(64, 29);
+            this.btnLuuSua.Size = new System.Drawing.Size(48, 29);
             this.btnLuuSua.TabIndex = 22;
             this.btnLuuSua.Text = "Lưu";
             this.btnLuuSua.UseVisualStyleBackColor = true;
@@ -286,21 +290,12 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.Location = new System.Drawing.Point(406, 603);
+            this.btnQuayLai.Location = new System.Drawing.Point(306, 603);
             this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(110, 29);
+            this.btnQuayLai.Size = new System.Drawing.Size(79, 29);
             this.btnQuayLai.TabIndex = 28;
             this.btnQuayLai.Text = "Quay lại";
             this.btnQuayLai.UseVisualStyleBackColor = true;
-            // 
-            // tbTimKiem
-            // 
-            this.tbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimKiem.Location = new System.Drawing.Point(189, 234);
-            this.tbTimKiem.Margin = new System.Windows.Forms.Padding(0);
-            this.tbTimKiem.Name = "tbTimKiem";
-            this.tbTimKiem.Size = new System.Drawing.Size(655, 24);
-            this.tbTimKiem.TabIndex = 29;
             // 
             // btnLuuThem
             // 
@@ -311,14 +306,23 @@
             this.btnLuuThem.Text = "Xác nhận thêm";
             this.btnLuuThem.UseVisualStyleBackColor = true;
             // 
+            // btnChonChuHo
+            // 
+            this.btnChonChuHo.Location = new System.Drawing.Point(391, 603);
+            this.btnChonChuHo.Name = "btnChonChuHo";
+            this.btnChonChuHo.Size = new System.Drawing.Size(126, 29);
+            this.btnChonChuHo.TabIndex = 31;
+            this.btnChonChuHo.Text = "Chọn chủ hộ";
+            this.btnChonChuHo.UseVisualStyleBackColor = true;
+            // 
             // FrmChiTietHoKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(882, 653);
+            this.Controls.Add(this.btnChonChuHo);
             this.Controls.Add(this.btnLuuThem);
-            this.Controls.Add(this.tbTimKiem);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.btnXemNhanKhau);
             this.Controls.Add(this.lbNhanKhau);
@@ -380,7 +384,7 @@
         private System.Windows.Forms.Label lbNhanKhau;
         private System.Windows.Forms.Button btnXemNhanKhau;
         private System.Windows.Forms.Button btnQuayLai;
-        private System.Windows.Forms.TextBox tbTimKiem;
         private System.Windows.Forms.Button btnLuuThem;
+        private System.Windows.Forms.Button btnChonChuHo;
     }
 }

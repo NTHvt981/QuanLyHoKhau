@@ -22,15 +22,12 @@ namespace QLHK_GUI
         Cmnd cmnd = null;
         Cccd cccd = null;
 
-        public delegate void MyEvent(object sender, CongDan cd);
-        public event MyEvent AddCongDanEvent;
-
         public FrmChiTietNhanKhau(CongDan cd)
         {
             InitializeComponent();
             congDan = cd;
 
-            if (congDanBUS.ExistInDatabase(cd))
+            if (congDan != null)
             {
                 SetSuaState();
                 disableSua();
@@ -38,6 +35,9 @@ namespace QLHK_GUI
             }
             else
             {
+                congDan = new CongDan();
+                congDan.NgaySinh = DateTime.Now;
+
                 SetThemState();
             }
 
@@ -47,6 +47,8 @@ namespace QLHK_GUI
             btnLuuSua.Click += BtnLuu_Click;
             btnLuuThem.Click += BtnLuuThem_Click;
             btnQuayLai.Click += BtnQuayLai_Click;
+
+            btnHoKhau.Click += BtnHoKhau_Click;
 
             rbCo.Click += RbCo_Click;
             rbKhong.Click += RbKhong_Click;
@@ -58,6 +60,19 @@ namespace QLHK_GUI
             this.FormClosing += FrmChiTietNhanKhau_FormClosing;
         }
 
+        private void BtnHoKhau_Click(object sender, EventArgs e)
+        {
+            FrmDanhSachHoKhau frm = new FrmDanhSachHoKhau(FormType.CHI_TIET_NHAN_KHAU);
+            frm.ValueEvent += ChonHoKhauEvent;
+            frm.Show(this);
+        }
+
+        private void ChonHoKhauEvent(HoKhau hoKhau)
+        {
+            hoKhau.Update(congDan);
+            setData(congDan);
+        }
+
         private void BtnTaoCccd_Click(object sender, EventArgs e)
         {
             Cccd cccd = new Cccd();
@@ -66,7 +81,7 @@ namespace QLHK_GUI
             FrmChiTietCccd frm = new FrmChiTietCccd(cccd);
             frm.AddCccdEvent += Frm_AddCccdEvent;
             frm.UpdateCccdEvent += Frm_UpdateCccdEvent;
-            frm.Show();
+            frm.Show(this);
         }
 
         private void Frm_UpdateCccdEvent(object sender, Cccd cd)
@@ -83,14 +98,14 @@ namespace QLHK_GUI
         private void BtnXemCmnd_Click(object sender, EventArgs e)
         {
             FrmChiTietCmnd frm = new FrmChiTietCmnd(cmnd);
-            frm.Show();
+            frm.Show(this);
         }
 
         private void BtnXemCccd_Click(object sender, EventArgs e)
         {
             FrmChiTietCccd frm = new FrmChiTietCccd(cccd);
             frm.FormClosed += FrmCccdSua_FormClosed;
-            frm.Show();
+            frm.Show(this);
         }
 
         private void FrmCccdSua_FormClosed(object sender, FormClosedEventArgs e)
@@ -119,11 +134,13 @@ namespace QLHK_GUI
                 return;
             }
 
-            MessageBox.Show("Thêm thông tin nhân khẩu thành công\n " +
-                "chọn Lưu trong màn hình thông tin nhân khẩu để có thể cập nhật trong CSDL");
-
-            AddCongDanEvent?.Invoke(this, congDan);
-            Close();
+            bool result = congDanBUS.Add(congDan);
+            if (result)
+            {
+                MessageBox.Show("Thêm nhân khẩu thành công");
+            }
+            else
+                MessageBox.Show("Có lỗi trong việc thêm nhân khẩu");
         }
 
         private void BtnQuayLai_Click(object sender, EventArgs e)
@@ -142,9 +159,13 @@ namespace QLHK_GUI
                 return;
             }
 
-            MessageBox.Show("Sửa thông tin nhân khẩu thành công\n " +
-                "chọn Lưu trong màn hình thông tin nhân khẩu để có thể cập nhật trong CSDL");
-
+            bool result = congDanBUS.Update(congDan);
+            if (result)
+            {
+                MessageBox.Show("sửa nhân khẩu thành công");
+            }
+            else
+                MessageBox.Show("Có lỗi trong việc sửa nhân khẩu");
 
             Close();
         }
@@ -196,8 +217,6 @@ namespace QLHK_GUI
             tbQueQuan.Enabled = true;
             tbQuocTich.Enabled = true;
             tbDiaChi.Enabled = true;
-            tbHoTenBo.Enabled = true;
-            tbHoTenMe.Enabled = true;
 
             btnLuuSua.Enabled = true;
             btnQuayLai.Enabled = true;
@@ -214,8 +233,6 @@ namespace QLHK_GUI
             tbQueQuan.Enabled = false;
             tbQuocTich.Enabled = false;
             tbDiaChi.Enabled = false;
-            tbHoTenBo.Enabled = false;
-            tbHoTenMe.Enabled = false;
 
             btnLuuSua.Enabled = false;
             btnQuayLai.Enabled = false;
