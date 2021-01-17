@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.panelSubMenuTC = new System.Windows.Forms.Panel();
+            this.btnTraCuuChuyenKhau = new System.Windows.Forms.Button();
+            this.btnQuanLyTraCuu = new System.Windows.Forms.Button();
             this.panelSubMenuQLTV = new System.Windows.Forms.Panel();
             this.btnDanhSachTamVang = new System.Windows.Forms.Button();
             this.btnCapGiayTamVang = new System.Windows.Forms.Button();
@@ -46,18 +49,13 @@
             this.panelTopLeft = new System.Windows.Forms.Panel();
             this.picBoxIcon = new System.Windows.Forms.PictureBox();
             this.panelSubForm = new System.Windows.Forms.Panel();
-            this.btnQuanLyTraCuu = new System.Windows.Forms.Button();
-            this.panelSubMenuTC = new System.Windows.Forms.Panel();
-            this.btnTraCuuTamVang = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnTraCuuChuyenKhau = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
+            this.panelSubMenuTC.SuspendLayout();
             this.panelSubMenuQLTV.SuspendLayout();
             this.panelSubMenuQLTT.SuspendLayout();
             this.panelSubMenuQLHK.SuspendLayout();
             this.panelTopLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxIcon)).BeginInit();
-            this.panelSubMenuTC.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -79,6 +77,38 @@
             this.panelLeft.Padding = new System.Windows.Forms.Padding(3);
             this.panelLeft.Size = new System.Drawing.Size(250, 753);
             this.panelLeft.TabIndex = 0;
+            // 
+            // panelSubMenuTC
+            // 
+            this.panelSubMenuTC.Controls.Add(this.btnTraCuuChuyenKhau);
+            this.panelSubMenuTC.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubMenuTC.Location = new System.Drawing.Point(3, 574);
+            this.panelSubMenuTC.Name = "panelSubMenuTC";
+            this.panelSubMenuTC.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.panelSubMenuTC.Size = new System.Drawing.Size(244, 123);
+            this.panelSubMenuTC.TabIndex = 12;
+            // 
+            // btnTraCuuChuyenKhau
+            // 
+            this.btnTraCuuChuyenKhau.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTraCuuChuyenKhau.Font = new System.Drawing.Font("Leelawadee UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraCuuChuyenKhau.Location = new System.Drawing.Point(8, 0);
+            this.btnTraCuuChuyenKhau.Name = "btnTraCuuChuyenKhau";
+            this.btnTraCuuChuyenKhau.Size = new System.Drawing.Size(236, 37);
+            this.btnTraCuuChuyenKhau.TabIndex = 14;
+            this.btnTraCuuChuyenKhau.Text = "Danh sách chuyển khẩu";
+            this.btnTraCuuChuyenKhau.UseVisualStyleBackColor = true;
+            // 
+            // btnQuanLyTraCuu
+            // 
+            this.btnQuanLyTraCuu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQuanLyTraCuu.Font = new System.Drawing.Font("Leelawadee UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuanLyTraCuu.Location = new System.Drawing.Point(3, 537);
+            this.btnQuanLyTraCuu.Name = "btnQuanLyTraCuu";
+            this.btnQuanLyTraCuu.Size = new System.Drawing.Size(244, 37);
+            this.btnQuanLyTraCuu.TabIndex = 11;
+            this.btnQuanLyTraCuu.Text = "Tra cứu";
+            this.btnQuanLyTraCuu.UseVisualStyleBackColor = true;
             // 
             // panelSubMenuQLTV
             // 
@@ -253,62 +283,6 @@
             this.panelSubForm.Size = new System.Drawing.Size(900, 753);
             this.panelSubForm.TabIndex = 1;
             // 
-            // btnQuanLyTraCuu
-            // 
-            this.btnQuanLyTraCuu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQuanLyTraCuu.Font = new System.Drawing.Font("Leelawadee UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuanLyTraCuu.Location = new System.Drawing.Point(3, 537);
-            this.btnQuanLyTraCuu.Name = "btnQuanLyTraCuu";
-            this.btnQuanLyTraCuu.Size = new System.Drawing.Size(244, 37);
-            this.btnQuanLyTraCuu.TabIndex = 11;
-            this.btnQuanLyTraCuu.Text = "Tra cứu";
-            this.btnQuanLyTraCuu.UseVisualStyleBackColor = true;
-            // 
-            // panelSubMenuTC
-            // 
-            this.panelSubMenuTC.Controls.Add(this.btnTraCuuChuyenKhau);
-            this.panelSubMenuTC.Controls.Add(this.button2);
-            this.panelSubMenuTC.Controls.Add(this.btnTraCuuTamVang);
-            this.panelSubMenuTC.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuTC.Location = new System.Drawing.Point(3, 574);
-            this.panelSubMenuTC.Name = "panelSubMenuTC";
-            this.panelSubMenuTC.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.panelSubMenuTC.Size = new System.Drawing.Size(244, 123);
-            this.panelSubMenuTC.TabIndex = 12;
-            // 
-            // btnTraCuuTamVang
-            // 
-            this.btnTraCuuTamVang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTraCuuTamVang.Font = new System.Drawing.Font("Leelawadee UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraCuuTamVang.Location = new System.Drawing.Point(8, 0);
-            this.btnTraCuuTamVang.Name = "btnTraCuuTamVang";
-            this.btnTraCuuTamVang.Size = new System.Drawing.Size(236, 37);
-            this.btnTraCuuTamVang.TabIndex = 12;
-            this.btnTraCuuTamVang.Text = "Danh sách hoạt động tạm vắng";
-            this.btnTraCuuTamVang.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Font = new System.Drawing.Font("Leelawadee UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(8, 37);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(236, 37);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Danh sách hoạt động tạm trú";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // btnTraCuuChuyenKhau
-            // 
-            this.btnTraCuuChuyenKhau.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTraCuuChuyenKhau.Font = new System.Drawing.Font("Leelawadee UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraCuuChuyenKhau.Location = new System.Drawing.Point(8, 74);
-            this.btnTraCuuChuyenKhau.Name = "btnTraCuuChuyenKhau";
-            this.btnTraCuuChuyenKhau.Size = new System.Drawing.Size(236, 37);
-            this.btnTraCuuChuyenKhau.TabIndex = 14;
-            this.btnTraCuuChuyenKhau.Text = "Danh sách chuyển khẩu";
-            this.btnTraCuuChuyenKhau.UseVisualStyleBackColor = true;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -321,12 +295,12 @@
             this.Name = "FrmMain";
             this.Text = "Quản lý hộ khẩu";
             this.panelLeft.ResumeLayout(false);
+            this.panelSubMenuTC.ResumeLayout(false);
             this.panelSubMenuQLTV.ResumeLayout(false);
             this.panelSubMenuQLTT.ResumeLayout(false);
             this.panelSubMenuQLHK.ResumeLayout(false);
             this.panelTopLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxIcon)).EndInit();
-            this.panelSubMenuTC.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,8 +328,6 @@
         private System.Windows.Forms.Button btnQuanLyTraCuu;
         private System.Windows.Forms.Panel panelSubMenuTC;
         private System.Windows.Forms.Button btnTraCuuChuyenKhau;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnTraCuuTamVang;
     }
 }
 

@@ -22,6 +22,9 @@ namespace QLHK_GUI
         Cmnd cmnd = null;
         Cccd cccd = null;
 
+        PhieuChuyenKhauBUS chuyenKhauBUS = new PhieuChuyenKhauBUS();
+        PhieuChuyenKhau phieuChuyenKhau = null;
+
         public FrmChiTietNhanKhau(CongDan cd)
         {
             InitializeComponent();
@@ -56,8 +59,6 @@ namespace QLHK_GUI
             btnXemCccd.Click += BtnXemCccd_Click;
             btnXemCmnd.Click += BtnXemCmnd_Click;
             btnTaoCccd.Click += BtnTaoCccd_Click;
-
-            this.FormClosing += FrmChiTietNhanKhau_FormClosing;
         }
 
         private void BtnHoKhau_Click(object sender, EventArgs e)
@@ -69,6 +70,8 @@ namespace QLHK_GUI
 
         private void ChonHoKhauEvent(HoKhau hoKhau)
         {
+            phieuChuyenKhau = chuyenKhauBUS.ChuyenKhau(congDan, hkMoi: hoKhau);
+
             hoKhau.Update(congDan);
             setData(congDan);
         }
@@ -111,16 +114,6 @@ namespace QLHK_GUI
         private void FrmCccdSua_FormClosed(object sender, FormClosedEventArgs e)
         {
 
-        }
-
-        private void FrmChiTietNhanKhau_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-            }
-            else
-            {
-            }
         }
 
         private void BtnLuuThem_Click(object sender, EventArgs e)
@@ -167,6 +160,9 @@ namespace QLHK_GUI
             else
                 MessageBox.Show("Có lỗi trong việc sửa nhân khẩu");
 
+            if (phieuChuyenKhau != null)
+                chuyenKhauBUS.Add(phieuChuyenKhau);
+
             Close();
         }
 
@@ -191,6 +187,10 @@ namespace QLHK_GUI
             congDan.QueQuan = tbQueQuan.Text;
             congDan.QuocTich = tbQuocTich.Text;
             congDan.DiaChiHoKhau = tbDiaChi.Text;
+
+            congDan.TonGiao = tbTonGiao.Text;
+            congDan.DanToc = tbDanToc.Text;
+            congDan.DacDiemNhanDang = tbDacDiemNhanDang.Text;
         }
 
         private void setData(CongDan result)
@@ -204,6 +204,10 @@ namespace QLHK_GUI
             tbQueQuan.Text = result.QueQuan;
             tbQuocTich.Text = result.QuocTich;
             tbDiaChi.Text = result.DiaChiHoKhau;
+
+            tbTonGiao.Text = result.TonGiao;
+            tbDanToc.Text = result.DanToc;
+            tbDacDiemNhanDang.Text = result.DacDiemNhanDang;
         }
 
         private void enableSua()
@@ -217,6 +221,10 @@ namespace QLHK_GUI
             tbQueQuan.Enabled = true;
             tbQuocTich.Enabled = true;
             tbDiaChi.Enabled = true;
+
+            tbDanToc.Enabled = true;
+            tbTonGiao.Enabled = true;
+            tbDacDiemNhanDang.Enabled = true;
 
             btnLuuSua.Enabled = true;
             btnQuayLai.Enabled = true;
@@ -233,6 +241,10 @@ namespace QLHK_GUI
             tbQueQuan.Enabled = false;
             tbQuocTich.Enabled = false;
             tbDiaChi.Enabled = false;
+
+            tbDanToc.Enabled = false;
+            tbTonGiao.Enabled = false;
+            tbDacDiemNhanDang.Enabled = false;
 
             btnLuuSua.Enabled = false;
             btnQuayLai.Enabled = false;

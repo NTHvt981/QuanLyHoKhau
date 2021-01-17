@@ -25,6 +25,7 @@ namespace QLHK_GUI
         public FrmDanhSachHoKhau(FormType type)
         {
             InitializeComponent();
+            formType = type;
 
             dgvHoKhau.CellClick += DgvHoKhau_CellClick;
 
@@ -40,6 +41,8 @@ namespace QLHK_GUI
             tbTimKiem.Leave += tbTimKiem_Leave;
             tbTimKiem_SetText();
 
+            disableSelect();
+
             dgvHoKhau.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             this.Load += FrmDanhSachHoKhau_Load;
@@ -48,6 +51,7 @@ namespace QLHK_GUI
         private void BtnNhanKhau_Click(object sender, EventArgs e)
         {
             ValueEvent?.Invoke(hoKhauSelected);
+            Close();
         }
 
         private void BtnThem_Click(object sender, EventArgs e)
@@ -154,7 +158,7 @@ namespace QLHK_GUI
             DataGridViewTextBoxColumn clTen = new DataGridViewTextBoxColumn();
             clTen.Name = "ChuHo";
             clTen.HeaderText = "Tên chủ hộ";
-            clTen.DataPropertyName = "ChuHo";
+            clTen.DataPropertyName = "TenChuHo";
             dgvHoKhau.Columns.Add(clTen);
 
             DataGridViewTextBoxColumn clDiaChi = new DataGridViewTextBoxColumn();

@@ -42,7 +42,7 @@ namespace QLHK_BUS
             return CongDanDAL.GetInstance().ReadAll();
         }
 
-        public CongDan Read(string ma)
+        public CongDan Read(int ma)
         {
             return CongDanDAL.GetInstance().Read(ma);
         }

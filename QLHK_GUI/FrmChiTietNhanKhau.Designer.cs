@@ -238,6 +238,7 @@
             this.tbDiaChi.Location = new System.Drawing.Point(123, 338);
             this.tbDiaChi.Multiline = true;
             this.tbDiaChi.Name = "tbDiaChi";
+            this.tbDiaChi.ReadOnly = true;
             this.tbDiaChi.Size = new System.Drawing.Size(695, 50);
             this.tbDiaChi.TabIndex = 105;
             // 

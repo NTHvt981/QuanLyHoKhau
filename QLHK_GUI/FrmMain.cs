@@ -29,6 +29,7 @@ namespace QLHK_GUI
             btnQuanLyHoKhau.Click += BtnQuanLyHoKhau_Click; ;
             btnQuanLyTamVang.Click += BtnQuanLyTamVang_Click;
             btnQuanLyTamTru.Click += BtnQuanLyTamTru_Click;
+            btnQuanLyTraCuu.Click += BtnQuanLyTraCuu_Click;
 
             btnTraCuuHoKhau.Click += BtnTraCuuHoKhau_Click;
             btnTraCuuNhanKhau.Click += BtnTraCuuNhanKhau_Click;
@@ -39,7 +40,34 @@ namespace QLHK_GUI
             btnDanhSachTamVang.Click += BtnTraCuuPhieuTamVang_Click;
             btnDanhSachTamTru.Click += BtnTraCuuTamTru_Click;
 
+            btnTraCuuChuyenKhau.Click += BtnTraCuuChuyenKhau_Click;
+
             btnExit.Click += BtnExit_Click;
+        }
+
+        private void BtnQuanLyTraCuu_Click(object sender, EventArgs e)
+        {
+            if (panelSubMenuTC.Visible == false)
+            {
+                openSubMenu(panelSubMenuTC);
+            }
+            else
+            {
+                panelSubMenuQLHK.Visible = false;
+            }
+        }
+
+        private void closeAllSubMenu()
+        {
+            panelSubMenuQLHK.Visible = false;
+            panelSubMenuQLTT.Visible = false;
+            panelSubMenuQLTV.Visible = false;
+            panelSubMenuTC.Visible = false;
+        }
+
+        private void BtnTraCuuChuyenKhau_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmDanhSachChuyenKhau());
         }
 
         private void BtnTraCuuTamTru_Click(object sender, EventArgs e)
@@ -75,7 +103,6 @@ namespace QLHK_GUI
         {
             if (panelSubMenuQLHK.Visible == false)
             {
-                closeAllSubMenu();
                 openSubMenu(panelSubMenuQLHK);
             }
             else
@@ -88,7 +115,6 @@ namespace QLHK_GUI
         {
             if (panelSubMenuQLTT.Visible == false)
             {
-                closeAllSubMenu();
                 openSubMenu(panelSubMenuQLTT);
             }
             else
@@ -101,7 +127,6 @@ namespace QLHK_GUI
         {
             if (panelSubMenuQLTV.Visible == false)
             {
-                closeAllSubMenu();
                 openSubMenu(panelSubMenuQLTV);
             }
             else
@@ -128,13 +153,6 @@ namespace QLHK_GUI
             panelSubForm.Controls.Add(childForm);
             childForm.BringToFront();
             childForm.Show();
-        }
-
-        private void closeAllSubMenu()
-        {
-            panelSubMenuQLHK.Visible = false;
-            panelSubMenuQLTV.Visible = false;
-            panelSubMenuQLTT.Visible = false;
         }
 
         private void openSubMenu(Panel subMenu)

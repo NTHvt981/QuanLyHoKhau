@@ -159,28 +159,22 @@ namespace QLHK_GUI
             clHoTen.DataPropertyName = "HoTen";
             dgvNhanKhau.Columns.Add(clHoTen);
 
-            DataGridViewTextBoxColumn clCMND = new DataGridViewTextBoxColumn();
-            clCMND.Name = "SoCmnd";
-            clCMND.HeaderText = "Số CMND";
-            clCMND.DataPropertyName = "SoCmnd";
-            dgvNhanKhau.Columns.Add(clCMND);
-
-            DataGridViewTextBoxColumn clCCCD = new DataGridViewTextBoxColumn();
-            clCCCD.Name = "SoCccd";
-            clCCCD.HeaderText = "Số CCCD";
-            clCCCD.DataPropertyName = "SoCccd";
-            dgvNhanKhau.Columns.Add(clCCCD);
-
             DataGridViewTextBoxColumn clGT = new DataGridViewTextBoxColumn();
             clGT.Name = "GioiTinh";
             clGT.HeaderText = "Giới tính";
             clGT.DataPropertyName = "GioiTinh";
             dgvNhanKhau.Columns.Add(clGT);
 
+            DataGridViewTextBoxColumn clCMND = new DataGridViewTextBoxColumn();
+            clCMND.Name = "SoCmnd";
+            clCMND.HeaderText = "Ngày sinh";
+            clCMND.DataPropertyName = "NgaySinh";
+            dgvNhanKhau.Columns.Add(clCMND);
+
             DataGridViewTextBoxColumn clQQ = new DataGridViewTextBoxColumn();
             clQQ.Name = "QueQuan";
-            clQQ.HeaderText = "Quê quán";
-            clQQ.DataPropertyName = "QueQuan";
+            clQQ.HeaderText = "Dân tộc";
+            clQQ.DataPropertyName = "DanToc";
             dgvNhanKhau.Columns.Add(clQQ);
 
             DataGridViewTextBoxColumn clQT = new DataGridViewTextBoxColumn();
@@ -189,10 +183,16 @@ namespace QLHK_GUI
             clQT.DataPropertyName = "QuocTich";
             dgvNhanKhau.Columns.Add(clQT);
 
+            DataGridViewTextBoxColumn clSoHK = new DataGridViewTextBoxColumn();
+            clSoHK.Name = "soHK";
+            clSoHK.HeaderText = "Số hộ khẩu";
+            clSoHK.DataPropertyName = "MaHoKhau";
+            dgvNhanKhau.Columns.Add(clSoHK);
+
             DataGridViewTextBoxColumn clDC = new DataGridViewTextBoxColumn();
             clDC.Name = "diaChiThuongTru";
-            clDC.HeaderText = "Địa chỉ";
-            clDC.DataPropertyName = "diaChiThuongTru";
+            clDC.HeaderText = "Địa chỉ hộ khẩu";
+            clDC.DataPropertyName = "DiaChiHoKhau";
             dgvNhanKhau.Columns.Add(clDC);
 
 

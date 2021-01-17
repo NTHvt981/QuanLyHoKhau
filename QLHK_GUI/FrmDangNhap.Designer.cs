@@ -60,6 +60,7 @@
             this.tbMatKhau.Name = "tbMatKhau";
             this.tbMatKhau.Size = new System.Drawing.Size(321, 26);
             this.tbMatKhau.TabIndex = 3;
+            this.tbMatKhau.UseSystemPasswordChar = true;
             // 
             // label2
             // 

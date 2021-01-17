@@ -45,6 +45,7 @@
     <Compile Include="CmndBUS.cs" />
     <Compile Include="CongDanBUS.cs" />
     <Compile Include="HoKhauBUS.cs" />
+    <Compile Include="PhieuChuyenKhauBUS.cs" />
     <Compile Include="PhieuTamTruBUS.cs" />
     <Compile Include="PhieuTamVangBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

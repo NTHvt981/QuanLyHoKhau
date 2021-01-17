@@ -205,7 +205,7 @@ namespace QLHK_DAL
             return congDans;
         }
 
-        public CongDan Read(string ma)
+        public CongDan Read(int ma)
         {
             string query = string.Empty;
             query += "SELECT TOP 1 * ";

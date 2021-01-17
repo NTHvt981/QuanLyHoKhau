@@ -286,7 +286,7 @@ namespace QLHK_DAL
             cmd.Parameters.AddWithValue("@NguoiCap", cd.NguoiCap);
         }
 
-        public HoKhau Read(string ma)
+        public HoKhau Read(int ma)
         {
             string query = string.Empty;
             query += "SELECT TOP 1 * ";
@@ -344,6 +344,46 @@ namespace QLHK_DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
                     cmd.Parameters.AddWithValue("@MaChuHo", ma);
+
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+
+                        reader = cmd.ExecuteReader();
+                        reader.Read();
+
+                        cd = GetFromReader(reader);
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return cd;
+        }
+        public HoKhau ReadBySoHoKhau(string soHk)
+        {
+            string query = string.Empty;
+            query += "SELECT TOP 1 * ";
+            query += "FROM [HO_KHAU] WHERE [SoSo]=@SoSo";
+
+            HoKhau cd = new HoKhau();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@SoSo", soHk);
 
                     try
                     {

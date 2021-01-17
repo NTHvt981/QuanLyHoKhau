@@ -44,7 +44,7 @@ namespace QLHK_BUS
             return HoKhauDAL.GetInstance().ReadAllByKeyword(key);
         }
 
-        public HoKhau Read(string ma)
+        public HoKhau Read(int ma)
         {
             return HoKhauDAL.GetInstance().Read(ma);
         }
